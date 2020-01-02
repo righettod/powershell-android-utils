@@ -22,10 +22,12 @@ function Expand-APK {
     Repack and sign an APK using APKTOOL + APKSIGNER instances present in PATH environment variable.
 #>
 function Compress-APK {
-    Write-Host "Repacking folder 'out' to 'app-updated.apk' file..." -ForegroundColor Green
+    $keystoreLocation = (Get-Module -ListAvailable Android-Utils).path
+    $keystoreLocation = $keystoreLocation.Replace("Android-Utils.psm1", "my.keystore")
+    Write-Host "Repacking folder 'out' to 'app-updated.apk' file using keystore '$keystoreLocation'..." -ForegroundColor Green
     Remove-Item app-updated.apk -Recurse -ErrorAction Ignore
     apktool b -d out/ -o app-updated.apk
-    apksigner sign --ks my.keystore --ks-pass pass:mypass app-updated.apk
+    apksigner sign --ks $keystoreLocation --ks-pass pass:mypass app-updated.apk
 }
 
 <#
