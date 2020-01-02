@@ -2,15 +2,25 @@
 
 Utility PowerShell module when manipulating APK on Windows.
 
-# Installation
+# Requirements
+
+The module assume that the follwing tools are available in `%PATH%`:
+
+* [adb](https://developer.android.com/studio/command-line/adb)
+* [apktool](https://ibotpeaches.github.io/Apktool/)
+* [apksigner](https://developer.android.com/studio/command-line/apksigner)
+
+You can use the function `Test-Tools` to verify that your installation is OK.
+
+# Module installation
 
 ## Step 1
 
 Open a PowerShell window and type this command to install the module into one of the auto-importing location:
 
 ```powershell
-PS C:\> $moduleLocation = $env:PSModulePath.Split(";")[0] + "\Android-Utils"
-PS C:\> git clone https://github.com/righettod/powershell-android-utils.git $moduleLocation
+PS> $moduleLocation = $env:PSModulePath.Split(";")[0] + "\Android-Utils"
+PS> git clone https://github.com/righettod/powershell-android-utils.git $moduleLocation
 ```
 
 ## Step 2
@@ -18,7 +28,7 @@ PS C:\> git clone https://github.com/righettod/powershell-android-utils.git $mod
 Close the PowerShell window above, open a new one and type the following command to test that the module is operational:
 
 ```powershell
-PS C:\> Get-Command -Module Android-Utils
+PS> Get-Command -Module Android-Utils
 
 CommandType     Name                                               Version    Source
 -----------     ----                                               -------    ------
@@ -30,7 +40,7 @@ Function        Install-APK                                        0.0        An
 Function        Test-Tools                                         0.0        Android-Utils
 Function        Watch-Log                                          0.0        Android-Utils
 
-PS C:\> Test-Tools
+PS> Test-Tools
 Ensure that the following Android SDK folders are added to the PATH environment variable:
 - [SDK_HOME]\platform-tools
 - [SDK_HOME]\build-tools\[LAST_INSTALLED_VERSION_FOLDER]
@@ -53,7 +63,6 @@ Module is ready to be used :thumbsup:
 Use the following command to get help about a function:
 
 ```powershell
-# Get-Help <FunctionName>
-PS C:\> Get-Help Watch-Log
-...
+# Get-Help <FunctionName> -full
+PS> Get-Help Watch-Log -full
 ```

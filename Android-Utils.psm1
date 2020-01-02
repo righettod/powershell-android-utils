@@ -1,9 +1,23 @@
 <#
-    .Description
+    .DESCRIPTION
+
     Depack an APK using APKTOOL instance present in PATH environment variable.
 
-    .Parameter apkLocation
+    .PARAMETER apkLocation
+
     Path to the APK to depack.
+
+    .INPUTS
+
+    None. You cannot pipe objects to this function.
+
+    .OUTPUTS
+
+    System. String. The function return the output of the tools used.    
+
+    .EXAMPLE
+
+    PS> Expand-APK -apkLocation app.apk
 #>
 function Expand-APK {
     [CmdletBinding()]
@@ -18,8 +32,21 @@ function Expand-APK {
 }
 
 <#
-    .Description
+    .DESCRIPTION
+
     Repack and sign an APK using APKTOOL + APKSIGNER instances present in PATH environment variable.
+
+    .INPUTS
+
+    None. You cannot pipe objects to this function.
+
+    .OUTPUTS
+
+    System. String. The function return the output of the tools used.        
+
+    .EXAMPLE
+
+    PS> Compress-APK   
 #>
 function Compress-APK {
     $keystoreLocation = (Get-Module -ListAvailable Android-Utils).path
@@ -31,11 +58,25 @@ function Compress-APK {
 }
 
 <#
-    .Description
+    .DESCRIPTION
+
     Re-Install patched application using the current connected ADB instance.
 
-    .Parameter appPkg
+    .PARAMETER appPkg
+
     Package name of the application.
+
+    .INPUTS
+
+    None. You cannot pipe objects to this function.
+
+    .OUTPUTS
+
+    System. String. The function return the output of the tools used.        
+
+    .EXAMPLE
+
+    PS> Install-APK -appPkg my.app.package     
 #>
 function Install-APK {
     [CmdletBinding()]
@@ -51,8 +92,21 @@ function Install-APK {
 }
 
 <#
-    .Description
+    .DESCRIPTION
+
     Check availability of used Android tools.
+
+    .INPUTS
+
+    None. You cannot pipe objects to this function.
+
+    .OUTPUTS
+
+    System. String. The function return the output of the tools used.        
+
+    .EXAMPLE
+
+    PS> Test-Tools   
 #>
 function Test-Tools {
     Write-Host "Ensure that the following Android SDK folders are added to the PATH environment variable:" -ForegroundColor Cyan 
@@ -70,8 +124,13 @@ function Test-Tools {
 }
 
 <#
-    .Description
+    .DESCRIPTION
+
     List installed packages on current connected device using the current connected ADB instance.
+
+    .EXAMPLE
+
+    PS> Get-Packages    
 #>
 function Get-Packages {
     Write-Host "List current installed packages..." -ForegroundColor Green
@@ -79,11 +138,25 @@ function Get-Packages {
 }
 
 <#
-    .Description
+    .DESCRIPTION
+
     Get the APK from the provided package name on current connected device using the current connected ADB instance.
 
-    .Parameter appPkg
+    .PARAMETER appPkg
+
     Package name of the application.
+
+    .INPUTS
+
+    None. You cannot pipe objects to this function.
+
+    .OUTPUTS
+
+    System. String. The function return the output of the tools used.        
+
+    .EXAMPLE
+
+    PS> Get-APK -appPkg my.app.package  
 #>
 function Get-APK {
     [CmdletBinding()]
@@ -101,18 +174,50 @@ function Get-APK {
 }
 
 <#
-    .Description
+    .DESCRIPTION
+
     Show the device log applying the provided filter on current connected device using the current connected ADB instance.
 
-    .Parameter marker
+    .PARAMETER marker
+
     Filtering expression used as string and not as regex.   
 
-    .Parameter tag
+    .PARAMETER tag
+
     Filtering expression used as Android logging TAG.
 
-    .Parameter priority
-    Filtering log priority ordered from lowest to highest priority: 
+    .PARAMETER priority
+
+    Filtering log priority ordered from lowest to highest priority (single character in the following range):
     (V)erbose / (D)ebug / (I)nfo / (W)arning / (E)rror / (F)atal / (S)ilent.
+
+    .INPUTS
+
+    None. You cannot pipe objects to this function.
+
+    .OUTPUTS
+
+    System. String. The function return the output of the tools used.        
+
+    .EXAMPLE
+
+    PS> Watch-Log -marker "Wifi"     
+
+    .EXAMPLE
+
+    PS> Watch-Log -tag "APP_TAG"         
+
+    .EXAMPLE
+
+    PS> Watch-Log -tag "APP_TAG" -priority I            
+
+    .EXAMPLE
+
+    PS> Watch-Log -priority I  
+    
+    .LINK
+    
+    https://developer.android.com/studio/command-line/logcat#filteringOutput    
 #>
 function Watch-Log {
     [CmdletBinding()]
