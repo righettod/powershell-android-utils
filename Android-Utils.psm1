@@ -173,6 +173,13 @@ function Get-APK {
     Write-Host "Get APK for the path '$appPkg'..." -ForegroundColor Green
     $pkgPath = adb shell pm path $appPkg
     $pkgPath = $pkgPath.Replace("package:", "")
+    $tmp = "";
+    foreach ($char in $pkgPath.ToCharArray()){
+        if(-not [Char]::IsControl($char)){
+            $tmp += $char
+        }
+    } 
+    $pkgPath = $tmp     
     Remove-Item app.apk -Recurse -ErrorAction Ignore
     adb pull "$pkgPath" app.apk
     Write-Host "APK stored as 'app.apk' file"
