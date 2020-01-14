@@ -34,7 +34,7 @@ function Expand-APK {
 <#
     .DESCRIPTION
 
-    Repack and sign an APK using APKTOOL + APKSIGNER instances present in PATH environment variable.
+    Repack and sign an APK using APKTOOL + ZIPALIGN + APKSIGNER instances present in PATH environment variable.
 
     .INPUTS
 
@@ -54,6 +54,9 @@ function Compress-APK {
     Write-Host "Repacking folder 'out' to 'app-updated.apk' file using keystore '$keystoreLocation'..." -ForegroundColor Green
     Remove-Item app-updated.apk -Recurse -ErrorAction Ignore
     apktool b -d out/ -o app-updated.apk
+    zipalign -f 4 app-updated.apk app-updated2.apk
+    Remove-Item "app-updated.apk"
+    Rename-Item -Path "app-updated2.apk" -NewName "app-updated.apk"
     apksigner sign --ks $keystoreLocation --ks-pass pass:mypass app-updated.apk
 }
 
@@ -119,6 +122,8 @@ function Test-Tools {
     adb --version
     Write-Host "APKSIGNER (https://developer.android.com/studio#downloads):" -ForegroundColor Yellow
     apksigner --version
+    Write-Host "ZIPALIGN (https://developer.android.com/studio#downloads):" -ForegroundColor Yellow
+    zipalign --version
     Write-Host "APKTOOL (https://bitbucket.org/iBotPeaches/apktool/downloads):" -ForegroundColor Yellow
     apktool --version
 }

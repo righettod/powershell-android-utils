@@ -9,6 +9,7 @@ The module assume that the following tools are available in `%PATH%`:
 * [adb](https://developer.android.com/studio/command-line/adb)
 * [apktool](https://ibotpeaches.github.io/Apktool/)
 * [apksigner](https://developer.android.com/studio/command-line/apksigner)
+* [zipalign](https://developer.android.com/studio/command-line/zipalign)
 
 :information_source: You can use the function `Test-Tools` to verify that your installation is OK.
 
