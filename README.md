@@ -28,7 +28,7 @@ PS> git clone https://github.com/righettod/powershell-android-utils.git $moduleL
 Close the PowerShell window above, open a new one and type the following command to test that the module is operational:
 
 ```powershell
-PS> Get-Command -Module Android-Utils
+PS> Show-Android-Functions
 
 CommandType     Name                                               Version    Source
 -----------     ----                                               -------    ------
@@ -37,6 +37,7 @@ Function        Expand-APK                                         0.0        An
 Function        Get-APK                                            0.0        Android-Utils
 Function        Get-Packages                                       0.0        Android-Utils
 Function        Install-APK                                        0.0        Android-Utils
+Function        Show-Android-Functions                             0.0        Android-Utils
 Function        Test-Tools                                         0.0        Android-Utils
 Function        Watch-Log                                          0.0        Android-Utils
 

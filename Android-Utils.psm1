@@ -251,5 +251,30 @@ function Watch-Log {
     adb logcat -v color $filter
 }
 
+<#
+    .DESCRIPTION
+
+    Show the available functions exposed by the "Android-Utils" module.
+
+    .INPUTS
+
+    None. You cannot pipe objects to this function.
+
+    .OUTPUTS
+
+    List of available functions.
+
+    .EXAMPLE
+
+    PS> Show-Android-Functions   
+    
+    .LINK
+    
+    https://github.com/righettod/powershell-android-utils
+#>
+function Show-Android-Functions(){
+    Get-Command -Module Android-Utils
+}
+
 # Define exported functions
 Export-ModuleMember -Function *
