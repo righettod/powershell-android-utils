@@ -39,6 +39,7 @@ Function        Get-APK                                            0.0        An
 Function        Get-Packages                                       0.0        Android-Utils
 Function        Install-APK                                        0.0        Android-Utils
 Function        Show-Android-Functions                             0.0        Android-Utils
+Function        Show-Signature-APK                                 0.0        Android-Utils
 Function        Test-Tools                                         0.0        Android-Utils
 Function        Watch-Log                                          0.0        Android-Utils
 

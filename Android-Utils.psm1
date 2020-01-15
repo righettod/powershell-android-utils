@@ -1,6 +1,38 @@
 <#
     .DESCRIPTION
 
+    Show the APK signature using APKSIGNER instance present in PATH environment variable.
+
+    .PARAMETER apkLocation
+
+    Path to the APK for which the signature must be displayed.
+
+    .INPUTS
+
+    None. You cannot pipe objects to this function.
+
+    .OUTPUTS
+
+    System. String. The signature information.    
+
+    .EXAMPLE
+
+    PS> Show-Signature-AP -apkLocation app.apk
+#>
+function Show-Signature-APK {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory = $true)]
+        [String]
+        $apkLocation
+    )
+    Write-Host "Signature of the file '$apkLocation':" -ForegroundColor Green
+    apksigner verify --verbose --print-certs $apkLocation
+}
+
+<#
+    .DESCRIPTION
+
     Depack an APK using APKTOOL instance present in PATH environment variable.
 
     .PARAMETER apkLocation
