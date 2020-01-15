@@ -224,7 +224,7 @@ function Get-APK {
 
     .PARAMETER marker
 
-    Filtering expression used as string and not as regex.   
+    Filtering expression used as regex.   
 
     .PARAMETER tag
 
@@ -246,6 +246,10 @@ function Get-APK {
     .EXAMPLE
 
     PS> Watch-Log -marker "Wifi"     
+	
+    .EXAMPLE
+
+    PS> Watch-Log -marker "^(.*(Patched).*)$"  	
 
     .EXAMPLE
 
@@ -291,8 +295,9 @@ function Watch-Log {
         $filter += " ${tag}:V *:S"
     }
     $filter = $filter.Trim() 
-    Write-Host "Apply filter (https://developer.android.com/studio/command-line/logcat): '$filter'" -ForegroundColor Green
-    adb logcat -v color $filter
+    Write-Host "Apply filter (https://developer.android.com/studio/command-line/logcat): $filter" -ForegroundColor Green
+	$cmd = "adb logcat -v color $filter"
+    Invoke-Expression $cmd
 }
 
 <#
