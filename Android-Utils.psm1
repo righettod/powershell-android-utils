@@ -45,7 +45,7 @@ function Show-Signature-APK {
 
     .OUTPUTS
 
-    System. String. The function return the output of the tools used.    
+    System. String. The output of the tools used.    
 
     .EXAMPLE
 
@@ -74,7 +74,7 @@ function Expand-APK {
 
     .OUTPUTS
 
-    System. String. The function return the output of the tools used.        
+    System. String. The output of the tools used.        
 
     .EXAMPLE
 
@@ -107,7 +107,7 @@ function Compress-APK {
 
     .OUTPUTS
 
-    System. String. The function return the output of the tools used.        
+    System. String. The output of the tools used.        
 
     .EXAMPLE
 
@@ -137,7 +137,7 @@ function Install-APK {
 
     .OUTPUTS
 
-    System. String. The function return the output of the tools used.        
+    System. String. The access status of all tools.        
 
     .EXAMPLE
 
@@ -165,6 +165,10 @@ function Test-Tools {
 
     List installed packages on current connected device using the current connected ADB instance.
 
+    .OUTPUTS
+
+    System. String. All packages present on the device.   
+
     .EXAMPLE
 
     PS> Get-Packages    
@@ -189,7 +193,7 @@ function Get-Packages {
 
     .OUTPUTS
 
-    System. String. The function return the output of the tools used.        
+    System. String. The output of the tools used.        
 
     .EXAMPLE
 
@@ -241,7 +245,7 @@ function Get-APK {
 
     .OUTPUTS
 
-    System. String. The function return the output of the tools used.        
+    System. String. The device log according to the filtering criteria provided.        
 
     .EXAMPLE
 
@@ -311,7 +315,7 @@ function Watch-Log {
 
     .OUTPUTS
 
-    List of available functions.
+    System. String. List of available functions.
 
     .EXAMPLE
 
@@ -323,6 +327,48 @@ function Watch-Log {
 #>
 function Show-Android-Functions(){
     Get-Command -Module Android-Utils
+}
+
+<#
+    .DESCRIPTION
+
+    Try to find if the APK use a framwework used to generate native app.
+
+    .PARAMETER apkLocation
+
+    Path to the APK to analyze.
+
+    .INPUTS
+
+    None. You cannot pipe objects to this function.
+
+    .OUTPUTS
+
+    System. String. The name of the framework if a one was identified.    
+
+    .EXAMPLE
+
+    PS> Find-Framework -apkLocation app.apk
+#>
+function Find-Framework {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory = $true)]
+        [String]
+        $apkLocation
+    ) 
+    # Entry format is "FrameworkIdentifier" = "FrameworkFileIdentificationPattern"
+    $supportedFrks = @{"XAMARIN" = "out\Xamarin*.dll" ; "CORDOVA" = "out\cordova*.js" ; "REACT-NATIVE" = "index.android.bundle"}
+    Expand-APK -apkLocation $apkLocation 
+    Write-Host "Analyze content of the '$apkLocation' file..." -ForegroundColor Green
+    $detectedFrks = "None"
+    $supportedFrks.GetEnumerator() | ForEach-Object{
+        $fileCount = (Get-ChildItem -Recurse $_.Value | Measure-Object).Count
+        if ( $fileCount -ne 0 ) {
+            $detectedFrks = $_.Key
+        }
+    }
+    Write-Host "Detected framework: $detectedFrks"
 }
 
 # Define exported functions
