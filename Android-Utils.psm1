@@ -358,17 +358,21 @@ function Find-Framework {
         $apkLocation
     ) 
     # Entry format is "FrameworkIdentifier" = "FrameworkFileIdentificationPattern"
-    $supportedFrks = @{"XAMARIN" = "out\Xamarin*.dll" ; "CORDOVA" = "out\cordova*.js" ; "REACT-NATIVE" = "index.android.bundle"}
+    $supportedFrks = @{"XAMARIN" = "out\Xamarin*.dll" ; "CORDOVA" = "out\cordova*.js" ; "REACT-NATIVE" = "out\libreactnative*.so"}
     Expand-APK -apkLocation $apkLocation 
     Write-Host "Analyze content of the '$apkLocation' file..." -ForegroundColor Green
-    $detectedFrks = "None"
+    $detectedFrks = ""
     $supportedFrks.GetEnumerator() | ForEach-Object{
         $fileCount = (Get-ChildItem -Recurse $_.Value | Measure-Object).Count
         if ( $fileCount -ne 0 ) {
-            $detectedFrks = $_.Key
+            $detectedFrks += $_.Key + " "
         }
     }
-    Write-Host "Detected framework: $detectedFrks"
+    if ( $detectedFrks -eq "" ){
+        Write-Host "No framework detected"
+    }else{
+        Write-Host "Detected framework: $detectedFrks"
+    }
 }
 
 # Define exported functions
