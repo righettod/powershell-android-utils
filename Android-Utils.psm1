@@ -85,7 +85,7 @@ function Compress-APK {
     $keystoreLocation = $keystoreLocation.Replace("Android-Utils.psm1", "my.keystore")
     Write-Host "Repacking folder 'out' to 'app-updated.apk' file using keystore '$keystoreLocation'..." -ForegroundColor Green
     Remove-Item app-updated.apk -Recurse -ErrorAction Ignore
-    apktool b -d out/ -o app-updated.apk
+    apktool b --use-aapt2 -d out/ -o app-updated.apk
     zipalign -f 4 app-updated.apk app-updated2.apk
     Remove-Item "app-updated.apk"
     Rename-Item -Path "app-updated2.apk" -NewName "app-updated.apk"
