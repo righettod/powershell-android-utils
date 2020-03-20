@@ -34,6 +34,7 @@ PS> Show-Android-Functions
 
 CommandType     Name                                               Version    Source
 -----------     ----                                               -------    ------
+Function        Backup-Data-APK                                    0.0        Android-Utils
 Function        Compress-APK                                       0.0        Android-Utils
 Function        Expand-APK                                         0.0        Android-Utils
 Function        Find-Framework                                     0.0        Android-Utils
