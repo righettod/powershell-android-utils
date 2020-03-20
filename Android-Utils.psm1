@@ -388,7 +388,8 @@ function Find-Framework {
 
     .PARAMETER encryptionPassword
 
-    Encryption password specified into the backup interface on the device during the backup process.
+    Encryption password specified into the backup interface on the device during the backup process. 
+    Do not specify it on the command line but using the prompt, see call example.
 
     .INPUTS
 
@@ -400,7 +401,7 @@ function Find-Framework {
 
     .EXAMPLE
 
-    PS> Backup-Data-APK -appPkg my.app.package -encryptionPassword xxx
+    PS> Backup-Data-APK -appPkg my.app.package
     
     .LINK
     
@@ -413,7 +414,7 @@ function Backup-Data-APK{
         [String]
         $appPkg,
         [Parameter(Mandatory = $true)]
-        [String]
+        [System.Security.SecureString]
         $encryptionPassword
     )
     Write-Host "Backup the application data of the package name '$appPkg' to file 'backup.tar'..." -ForegroundColor Green
@@ -422,7 +423,8 @@ function Backup-Data-APK{
     Remove-Item backup.ab -Recurse -ErrorAction Ignore
     Remove-Item backup.tar -Recurse -ErrorAction Ignore
     adb backup -f backup.ab -apk $appPkg
-    java -jar $abeLocation unpack backup.ab backup.tar $encryptionPassword
+    $encryptionPasswordPlain = (New-Object System.Management.AUtomation.PSCredential("dummy", $encryptionPassword)).GetNetworkCredential().password
+    java -jar $abeLocation unpack backup.ab backup.tar $encryptionPasswordPlain
 }
 
 # Define exported functions
