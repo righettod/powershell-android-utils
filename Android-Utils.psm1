@@ -158,12 +158,14 @@ function Test-Tools {
     zipalign --version
     Write-Host "APKTOOL (https://bitbucket.org/iBotPeaches/apktool/downloads):" -ForegroundColor Yellow
     apktool --version
+    Write-Host "JAVA (https://adoptopenjdk.net):" -ForegroundColor Yellow
+    java --version
 }
 
 <#
     .DESCRIPTION
 
-    List installed packages on current connected device using the current connected ADB instance.
+    List installed packages on the current connected device using the current connected ADB instance.
 
     .OUTPUTS
 
@@ -181,7 +183,7 @@ function Get-Packages {
 <#
     .DESCRIPTION
 
-    Get the APK from the provided package name on current connected device using the current connected ADB instance.
+    Get the APK from the provided package name on the current connected device using the current connected ADB instance.
 
     .PARAMETER appPkg
 
@@ -373,6 +375,54 @@ function Find-Framework {
     }else{
         Write-Host "Detected framework: $detectedFrks"
     }
+}
+
+<#
+    .DESCRIPTION
+
+    Perform a backup of the provided package name on the current connected device using the current connected ADB instance.
+
+    .PARAMETER appPkg
+
+    Package name of the application.
+
+    .PARAMETER encryptionPassword
+
+    Encryption password specified into the backup interface on the device during the backup process.
+
+    .INPUTS
+
+    None. You cannot pipe objects to this function.
+
+    .OUTPUTS
+
+    System. String. The output of the tools used.        
+
+    .EXAMPLE
+
+    PS> Backup-Data-APK -appPkg my.app.package -encryptionPassword xxx
+    
+    .LINK
+    
+    https://github.com/nelenkov/android-backup-extractor
+#>
+function Backup-Data-APK{
+   [CmdletBinding()]
+    param(
+        [Parameter(Mandatory = $true)]
+        [String]
+        $appPkg,
+        [Parameter(Mandatory = $true)]
+        [String]
+        $encryptionPassword
+    )
+    Write-Host "Backup the application data of the package name '$appPkg' to file 'backup.tar'..." -ForegroundColor Green
+    $abeLocation = (Get-Module -ListAvailable Android-Utils).path
+    $abeLocation = $abeLocation.Replace("Android-Utils.psm1", "abe-all.jar")
+    Remove-Item backup.ab -Recurse -ErrorAction Ignore
+    Remove-Item backup.tar -Recurse -ErrorAction Ignore
+    adb backup -f backup.ab -apk $appPkg
+    java -jar $abeLocation unpack backup.ab backup.tar $encryptionPassword
 }
 
 # Define exported functions

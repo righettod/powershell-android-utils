@@ -10,6 +10,7 @@ The module assume that the following tools are available in `%PATH%`:
 * [apktool](https://ibotpeaches.github.io/Apktool/)
 * [apksigner](https://developer.android.com/studio/command-line/apksigner)
 * [zipalign](https://developer.android.com/studio/command-line/zipalign)
+* [java](https://adoptopenjdk.net) (Runtime or JDK)
 
 :information_source: You can use the function `Test-Tools` to verify that your installation is OK.
 
@@ -58,6 +59,10 @@ APKSIGNER (https://developer.android.com/studio#downloads):
 0.8
 APKTOOL (https://bitbucket.org/iBotPeaches/apktool/downloads):
 2.4.1
+JAVA (https://adoptopenjdk.net):
+openjdk 12.0.2 2019-07-16
+OpenJDK Runtime Environment AdoptOpenJDK (build 12.0.2+10)
+OpenJDK 64-Bit Server VM AdoptOpenJDK (build 12.0.2+10, mixed mode, sharing)
 ```
 
 Module is ready to be used :thumbsup: 
