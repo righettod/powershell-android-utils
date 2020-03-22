@@ -427,5 +427,25 @@ function Backup-Data-APK{
     java -jar $abeLocation unpack backup.ab backup.tar $encryptionPasswordPlain
 }
 
+<#
+    .DESCRIPTION
+
+    Take a screenshot on the current connected device using the current connected ADB instance and download it into the current folder (image is removed after the download).
+
+    .OUTPUTS
+
+    System. String. The output of the tools used.         
+
+    .EXAMPLE
+
+    PS> Get-Screenshot   
+#>
+function Get-Screenshot {
+    Write-Host "Take a screenshot of the current screen and download it into file 'screenshot.png'..." -ForegroundColor Green
+    adb shell screencap -p /sdcard/Download/screenshot.png
+    adb pull /sdcard/Download/screenshot.png .
+    adb shell rm /sdcard/Download/screenshot.png
+}
+
 # Define exported functions
 Export-ModuleMember -Function *
