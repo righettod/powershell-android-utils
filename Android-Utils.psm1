@@ -442,9 +442,56 @@ function Backup-Data-APK{
 #>
 function Get-Screenshot {
     Write-Host "Take a screenshot of the current screen and download it into file 'screenshot.png'..." -ForegroundColor Green
-    adb shell screencap -p /sdcard/Download/screenshot.png
-    adb pull /sdcard/Download/screenshot.png .
-    adb shell rm /sdcard/Download/screenshot.png
+    adb shell screencap -p /data/local/tmp/screenshot.png
+    adb pull /data/local/tmp/screenshot.png .
+    adb shell rm /data/local/tmp/screenshot.png
+}
+
+<#
+    .DESCRIPTION
+
+    Take a memory dump of the process of the application specified on the current connected device using the current connected ADB instance and download it into the current folder (dump file is removed after the download).
+
+    .PARAMETER appPkg
+
+    Package name of the application.
+
+    .INPUTS
+
+    None. You cannot pipe objects to this function.
+
+    .OUTPUTS
+
+    System. String. The output of the tools used.        
+
+    .EXAMPLE
+
+    PS> Get-Memory-Dump -appPkg my.app.package  
+#>
+function Get-Memory-Dump {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory = $true)]
+        [String]
+        $appPkg
+    )
+    $dumpScriptLocation = (Get-Module -ListAvailable Android-Utils).path
+    $dumpScriptLocation = $dumpScriptLocation.Replace("Android-Utils.psm1", "memory-dump.sh")
+    $appPid = adb shell pidof -s $appPkg
+    $tmp = "";
+    foreach ($char in $appPid.ToCharArray()){
+        if(-not [Char]::IsControl($char)){
+            $tmp += $char
+        }
+    }
+    $appPid = $tmp.trim() -as [int]
+    Write-Host "Take a memory dump of the specified application (PID: $appPid) and download it into file 'memory-dump.hprof'..." -ForegroundColor Green
+    adb push $dumpScriptLocation /data/local/tmp/memory-dump.sh
+    adb shell chmod +x /data/local/tmp/memory-dump.sh
+    adb shell sh /data/local/tmp/memory-dump.sh $appPid
+    adb pull /data/local/tmp/memory-dump.hprof .
+    adb shell rm /data/local/tmp/memory-dump.hprof
+    adb shell rm /data/local/tmp/memory-dump.sh
 }
 
 # Define exported functions
