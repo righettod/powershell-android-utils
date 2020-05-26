@@ -360,7 +360,7 @@ function Find-Framework {
         $apkLocation
     ) 
     # Entry format is "FrameworkIdentifier" = "FrameworkFileIdentificationPattern"
-    $supportedFrks = @{"XAMARIN" = "out\Xamarin*.dll" ; "CORDOVA" = "out\cordova*.js" ; "REACT-NATIVE" = "out\libreactnative*.so"}
+    $supportedFrks = @{"XAMARIN" = "out\Xamarin*.dll" ; "CORDOVA" = "out\cordova*.js" ; "REACT-NATIVE" = "out\libreactnative*.so" ; "FLUTTER" = "out\libflutter*.so"}
     Expand-APK -apkLocation $apkLocation 
     Write-Host "Analyze content of the '$apkLocation' file..." -ForegroundColor Green
     $detectedFrks = ""
