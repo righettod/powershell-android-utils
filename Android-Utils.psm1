@@ -494,5 +494,34 @@ function Get-Memory-Dump {
     adb shell rm /data/local/tmp/memory-dump.sh
 }
 
+<#
+    .DESCRIPTION
+
+    Take a screen recording on the current connected device using the current connected ADB instance and download it into the current folder (video is removed after the download).
+
+    .OUTPUTS
+
+    System. String. The output of the tools used.         
+
+    .EXAMPLE
+
+    PS> Get-Screenrecord
+#>
+function Get-Screenrecord {
+    Write-Host "Take a video and download it into file 'screenrecord.mp4'..." -ForegroundColor Green
+    Write-Host "Press CTRL+C to finish the recording." -ForegroundColor Cyan
+    # Use a "Try{} Finally{}" to catch the CTRL+C
+    # See https://stackoverflow.com/a/15788979/451455
+    try{
+        adb shell screenrecord /data/local/tmp/screenrecord.mp4
+    }
+    finally{
+        Write-Host "Give 10 seconds to the device to finish writing the file..." -ForegroundColor Cyan
+        Start-Sleep -Seconds 10
+        adb pull /data/local/tmp/screenrecord.mp4 .
+        adb shell rm /data/local/tmp/screenrecord.mp4
+    }
+}
+
 # Define exported functions
 Export-ModuleMember -Function *

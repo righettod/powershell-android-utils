@@ -47,6 +47,7 @@ Function        Find-Framework                                     0.0        An
 Function        Get-APK                                            0.0        Android-Utils
 Function        Get-Memory-Dump                                    0.0        Android-Utils
 Function        Get-Packages                                       0.0        Android-Utils
+Function        Get-Screenrecord                                   0.0        Android-Utils
 Function        Get-Screenshot                                     0.0        Android-Utils
 Function        Install-APK                                        0.0        Android-Utils
 Function        Show-Android-Functions                             0.0        Android-Utils
