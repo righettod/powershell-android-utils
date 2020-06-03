@@ -123,7 +123,7 @@ function Install-APK {
     Write-Host "Uninstall the current application version..." -ForegroundColor Green
     adb uninstall $appPkg
     Write-Host "Install the patched application version..." -ForegroundColor Green
-    adb install app-updated.apk
+    adb install -t -d app-updated.apk
 }
 
 <#
