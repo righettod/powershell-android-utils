@@ -1,0 +1,992 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Android-Utils</title>
+    <link href="bootstrap.min.css" rel="stylesheet">
+    <link href="jasny-bootstrap.min.css" rel="stylesheet">
+    <link href="navmenu.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="navmenu navmenu-default navmenu-fixed-left offcanvas-sm hidden-print">
+      <nav class="sidebar-nav" role="complementary">
+      <a class="navmenu-brand visible-md visible-lg" href="#" data-toggle="tooltip" title="Android-Utils">Android-Utils</a>
+      <ul class="nav navmenu-nav">
+        <li><a href="#About">About</a></li>
+          <!-- Backup-Data-APK Menu -->
+          <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Backup-Data-APK <b class="caret"></b></a>
+          <ul class="dropdown-menu navmenu-nav">
+            <li><a href="#Backup-Data-APK-Synopsis">Synopsis</a></li>
+            <li><a href="#Backup-Data-APK-Syntax">Syntax</a></li>
+            <li><a href="#Backup-Data-APK-Description">Description</a></li>
+            <li><a href="#Backup-Data-APK-Parameters">Parameters</a></li>
+            <li><a href="#Backup-Data-APK-Inputs">Inputs</a></li>
+            <li><a href="#Backup-Data-APK-Outputs">Outputs</a></li>
+            <li><a href="#Backup-Data-APK-Examples">Examples</a></li>
+            <li><a href="#Backup-Data-APK-RelatedLinks">RelatedLinks</a></li>
+            <li><a href="#Backup-Data-APK-Notes">Notes</a></li>
+          </ul>
+        </li>
+        <!-- End Backup-Data-APK Menu -->
+          <!-- Compress-APK Menu -->
+          <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Compress-APK <b class="caret"></b></a>
+          <ul class="dropdown-menu navmenu-nav">
+            <li><a href="#Compress-APK-Synopsis">Synopsis</a></li>
+            <li><a href="#Compress-APK-Syntax">Syntax</a></li>
+            <li><a href="#Compress-APK-Description">Description</a></li>
+            <li><a href="#Compress-APK-Parameters">Parameters</a></li>
+            <li><a href="#Compress-APK-Inputs">Inputs</a></li>
+            <li><a href="#Compress-APK-Outputs">Outputs</a></li>
+            <li><a href="#Compress-APK-Examples">Examples</a></li>
+            <li><a href="#Compress-APK-RelatedLinks">RelatedLinks</a></li>
+            <li><a href="#Compress-APK-Notes">Notes</a></li>
+          </ul>
+        </li>
+        <!-- End Compress-APK Menu -->
+          <!-- Expand-APK Menu -->
+          <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Expand-APK <b class="caret"></b></a>
+          <ul class="dropdown-menu navmenu-nav">
+            <li><a href="#Expand-APK-Synopsis">Synopsis</a></li>
+            <li><a href="#Expand-APK-Syntax">Syntax</a></li>
+            <li><a href="#Expand-APK-Description">Description</a></li>
+            <li><a href="#Expand-APK-Parameters">Parameters</a></li>
+            <li><a href="#Expand-APK-Inputs">Inputs</a></li>
+            <li><a href="#Expand-APK-Outputs">Outputs</a></li>
+            <li><a href="#Expand-APK-Examples">Examples</a></li>
+            <li><a href="#Expand-APK-RelatedLinks">RelatedLinks</a></li>
+            <li><a href="#Expand-APK-Notes">Notes</a></li>
+          </ul>
+        </li>
+        <!-- End Expand-APK Menu -->
+          <!-- Find-Framework Menu -->
+          <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Find-Framework <b class="caret"></b></a>
+          <ul class="dropdown-menu navmenu-nav">
+            <li><a href="#Find-Framework-Synopsis">Synopsis</a></li>
+            <li><a href="#Find-Framework-Syntax">Syntax</a></li>
+            <li><a href="#Find-Framework-Description">Description</a></li>
+            <li><a href="#Find-Framework-Parameters">Parameters</a></li>
+            <li><a href="#Find-Framework-Inputs">Inputs</a></li>
+            <li><a href="#Find-Framework-Outputs">Outputs</a></li>
+            <li><a href="#Find-Framework-Examples">Examples</a></li>
+            <li><a href="#Find-Framework-RelatedLinks">RelatedLinks</a></li>
+            <li><a href="#Find-Framework-Notes">Notes</a></li>
+          </ul>
+        </li>
+        <!-- End Find-Framework Menu -->
+          <!-- Get-APK Menu -->
+          <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Get-APK <b class="caret"></b></a>
+          <ul class="dropdown-menu navmenu-nav">
+            <li><a href="#Get-APK-Synopsis">Synopsis</a></li>
+            <li><a href="#Get-APK-Syntax">Syntax</a></li>
+            <li><a href="#Get-APK-Description">Description</a></li>
+            <li><a href="#Get-APK-Parameters">Parameters</a></li>
+            <li><a href="#Get-APK-Inputs">Inputs</a></li>
+            <li><a href="#Get-APK-Outputs">Outputs</a></li>
+            <li><a href="#Get-APK-Examples">Examples</a></li>
+            <li><a href="#Get-APK-RelatedLinks">RelatedLinks</a></li>
+            <li><a href="#Get-APK-Notes">Notes</a></li>
+          </ul>
+        </li>
+        <!-- End Get-APK Menu -->
+          <!-- Get-Memory-Dump Menu -->
+          <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Get-Memory-Dump <b class="caret"></b></a>
+          <ul class="dropdown-menu navmenu-nav">
+            <li><a href="#Get-Memory-Dump-Synopsis">Synopsis</a></li>
+            <li><a href="#Get-Memory-Dump-Syntax">Syntax</a></li>
+            <li><a href="#Get-Memory-Dump-Description">Description</a></li>
+            <li><a href="#Get-Memory-Dump-Parameters">Parameters</a></li>
+            <li><a href="#Get-Memory-Dump-Inputs">Inputs</a></li>
+            <li><a href="#Get-Memory-Dump-Outputs">Outputs</a></li>
+            <li><a href="#Get-Memory-Dump-Examples">Examples</a></li>
+            <li><a href="#Get-Memory-Dump-RelatedLinks">RelatedLinks</a></li>
+            <li><a href="#Get-Memory-Dump-Notes">Notes</a></li>
+          </ul>
+        </li>
+        <!-- End Get-Memory-Dump Menu -->
+          <!-- Get-Packages Menu -->
+          <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Get-Packages <b class="caret"></b></a>
+          <ul class="dropdown-menu navmenu-nav">
+            <li><a href="#Get-Packages-Synopsis">Synopsis</a></li>
+            <li><a href="#Get-Packages-Syntax">Syntax</a></li>
+            <li><a href="#Get-Packages-Description">Description</a></li>
+            <li><a href="#Get-Packages-Parameters">Parameters</a></li>
+            <li><a href="#Get-Packages-Inputs">Inputs</a></li>
+            <li><a href="#Get-Packages-Outputs">Outputs</a></li>
+            <li><a href="#Get-Packages-Examples">Examples</a></li>
+            <li><a href="#Get-Packages-RelatedLinks">RelatedLinks</a></li>
+            <li><a href="#Get-Packages-Notes">Notes</a></li>
+          </ul>
+        </li>
+        <!-- End Get-Packages Menu -->
+          <!-- Get-Screenrecord Menu -->
+          <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Get-Screenrecord <b class="caret"></b></a>
+          <ul class="dropdown-menu navmenu-nav">
+            <li><a href="#Get-Screenrecord-Synopsis">Synopsis</a></li>
+            <li><a href="#Get-Screenrecord-Syntax">Syntax</a></li>
+            <li><a href="#Get-Screenrecord-Description">Description</a></li>
+            <li><a href="#Get-Screenrecord-Parameters">Parameters</a></li>
+            <li><a href="#Get-Screenrecord-Inputs">Inputs</a></li>
+            <li><a href="#Get-Screenrecord-Outputs">Outputs</a></li>
+            <li><a href="#Get-Screenrecord-Examples">Examples</a></li>
+            <li><a href="#Get-Screenrecord-RelatedLinks">RelatedLinks</a></li>
+            <li><a href="#Get-Screenrecord-Notes">Notes</a></li>
+          </ul>
+        </li>
+        <!-- End Get-Screenrecord Menu -->
+          <!-- Get-Screenshot Menu -->
+          <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Get-Screenshot <b class="caret"></b></a>
+          <ul class="dropdown-menu navmenu-nav">
+            <li><a href="#Get-Screenshot-Synopsis">Synopsis</a></li>
+            <li><a href="#Get-Screenshot-Syntax">Syntax</a></li>
+            <li><a href="#Get-Screenshot-Description">Description</a></li>
+            <li><a href="#Get-Screenshot-Parameters">Parameters</a></li>
+            <li><a href="#Get-Screenshot-Inputs">Inputs</a></li>
+            <li><a href="#Get-Screenshot-Outputs">Outputs</a></li>
+            <li><a href="#Get-Screenshot-Examples">Examples</a></li>
+            <li><a href="#Get-Screenshot-RelatedLinks">RelatedLinks</a></li>
+            <li><a href="#Get-Screenshot-Notes">Notes</a></li>
+          </ul>
+        </li>
+        <!-- End Get-Screenshot Menu -->
+          <!-- Install-APK Menu -->
+          <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Install-APK <b class="caret"></b></a>
+          <ul class="dropdown-menu navmenu-nav">
+            <li><a href="#Install-APK-Synopsis">Synopsis</a></li>
+            <li><a href="#Install-APK-Syntax">Syntax</a></li>
+            <li><a href="#Install-APK-Description">Description</a></li>
+            <li><a href="#Install-APK-Parameters">Parameters</a></li>
+            <li><a href="#Install-APK-Inputs">Inputs</a></li>
+            <li><a href="#Install-APK-Outputs">Outputs</a></li>
+            <li><a href="#Install-APK-Examples">Examples</a></li>
+            <li><a href="#Install-APK-RelatedLinks">RelatedLinks</a></li>
+            <li><a href="#Install-APK-Notes">Notes</a></li>
+          </ul>
+        </li>
+        <!-- End Install-APK Menu -->
+          <!-- Show-Android-Functions Menu -->
+          <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Show-Android-Functions <b class="caret"></b></a>
+          <ul class="dropdown-menu navmenu-nav">
+            <li><a href="#Show-Android-Functions-Synopsis">Synopsis</a></li>
+            <li><a href="#Show-Android-Functions-Syntax">Syntax</a></li>
+            <li><a href="#Show-Android-Functions-Description">Description</a></li>
+            <li><a href="#Show-Android-Functions-Parameters">Parameters</a></li>
+            <li><a href="#Show-Android-Functions-Inputs">Inputs</a></li>
+            <li><a href="#Show-Android-Functions-Outputs">Outputs</a></li>
+            <li><a href="#Show-Android-Functions-Examples">Examples</a></li>
+            <li><a href="#Show-Android-Functions-RelatedLinks">RelatedLinks</a></li>
+            <li><a href="#Show-Android-Functions-Notes">Notes</a></li>
+          </ul>
+        </li>
+        <!-- End Show-Android-Functions Menu -->
+          <!-- Show-Signature-APK Menu -->
+          <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Show-Signature-APK <b class="caret"></b></a>
+          <ul class="dropdown-menu navmenu-nav">
+            <li><a href="#Show-Signature-APK-Synopsis">Synopsis</a></li>
+            <li><a href="#Show-Signature-APK-Syntax">Syntax</a></li>
+            <li><a href="#Show-Signature-APK-Description">Description</a></li>
+            <li><a href="#Show-Signature-APK-Parameters">Parameters</a></li>
+            <li><a href="#Show-Signature-APK-Inputs">Inputs</a></li>
+            <li><a href="#Show-Signature-APK-Outputs">Outputs</a></li>
+            <li><a href="#Show-Signature-APK-Examples">Examples</a></li>
+            <li><a href="#Show-Signature-APK-RelatedLinks">RelatedLinks</a></li>
+            <li><a href="#Show-Signature-APK-Notes">Notes</a></li>
+          </ul>
+        </li>
+        <!-- End Show-Signature-APK Menu -->
+          <!-- Test-Tools Menu -->
+          <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Test-Tools <b class="caret"></b></a>
+          <ul class="dropdown-menu navmenu-nav">
+            <li><a href="#Test-Tools-Synopsis">Synopsis</a></li>
+            <li><a href="#Test-Tools-Syntax">Syntax</a></li>
+            <li><a href="#Test-Tools-Description">Description</a></li>
+            <li><a href="#Test-Tools-Parameters">Parameters</a></li>
+            <li><a href="#Test-Tools-Inputs">Inputs</a></li>
+            <li><a href="#Test-Tools-Outputs">Outputs</a></li>
+            <li><a href="#Test-Tools-Examples">Examples</a></li>
+            <li><a href="#Test-Tools-RelatedLinks">RelatedLinks</a></li>
+            <li><a href="#Test-Tools-Notes">Notes</a></li>
+          </ul>
+        </li>
+        <!-- End Test-Tools Menu -->
+          <!-- Watch-Log Menu -->
+          <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Watch-Log <b class="caret"></b></a>
+          <ul class="dropdown-menu navmenu-nav">
+            <li><a href="#Watch-Log-Synopsis">Synopsis</a></li>
+            <li><a href="#Watch-Log-Syntax">Syntax</a></li>
+            <li><a href="#Watch-Log-Description">Description</a></li>
+            <li><a href="#Watch-Log-Parameters">Parameters</a></li>
+            <li><a href="#Watch-Log-Inputs">Inputs</a></li>
+            <li><a href="#Watch-Log-Outputs">Outputs</a></li>
+            <li><a href="#Watch-Log-Examples">Examples</a></li>
+            <li><a href="#Watch-Log-RelatedLinks">RelatedLinks</a></li>
+            <li><a href="#Watch-Log-Notes">Notes</a></li>
+          </ul>
+        </li>
+        <!-- End Watch-Log Menu -->
+        <li><a class="back-to-top" href="#top"><small>Back to top</small></a></li>
+      </ul>
+    </nav>
+    </div>
+    <div class="navbar navbar-default navbar-fixed-top hidden-md hidden-lg hidden-print">
+      <button type="button" class="navbar-toggle" data-toggle="offcanvas" data-target=".navmenu">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Android-Utils</a>
+    </div>
+    <div class="container">
+      <div class="page-content">
+        <!-- About Android-Utils -->
+        <h1 id="About" class="page-header">About Android-Utils</h1>
+        <div class="row">
+          <div class="col-md-4 col-xs-4">
+            Description<br>
+            ModuleBase<br>
+            Version<br>
+            Author<br>
+            CompanyName<br>
+            Copyright
+          </div>
+          <div class="col-md-6 col-xs-6">
+            <br>
+            C:\Users\drighetto\Documents\WindowsPowerShell\Modules\Android-Utils\docs\modules\Android-Utils<br>
+            0.0<br>
+            <br>
+            <br>
+            
+          </div>
+        </div>
+        <br>
+        <!-- End About -->
+        <!-- Backup-Data-APK -->
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h2 id="Backup-Data-APK-Header">Backup-Data-APK</h1>
+          </div>
+          <div class="panel-body">
+            <h3 id="Backup-Data-APK-Synopsis">Synopsis</h3>
+            <p></p>
+            <h3 id="Backup-Data-APK-Syntax">Syntax</h3>
+            <pre>Backup-Data-APK -appPkg &lt;String&gt; -encryptionPassword &lt;SecureString&gt;</pre>
+            <h3 id="Backup-Data-APK-Description">Description</h3>
+            <p>Perform a backup of the provided package name on the current connected device using the current connected ADB instance.</p>
+            <h3 id="Backup-Data-APK-Parameters">Parameters</h3>
+            <dl class="dl-horizontal">
+              <dt data-toggle="tooltip" title="appPkg">-appPkg</dt>
+              <dd>&lt;String&gt;<br>
+                Package name of the application.<br><br>
+                <div class="row">
+                  <div class="col-md-4 col-xs-4">
+                    Required?<br>
+                    Position?<br>
+                    Default value<br>
+                    Accept pipeline input?<br>
+                    Accept wildchard characters?
+                  </div>
+                  <div class="col-md-6 col-xs-6">
+                    true<br>
+                    1<br>
+                    <br>
+                    false<br>
+                    false
+                  </div>
+                </div>
+                <br>
+              </dd>
+              <dt data-toggle="tooltip" title="encryptionPassword">-encryptionPassword</dt>
+              <dd>&lt;SecureString&gt;<br>
+                Encryption password specified into the backup interface on the device during the backup process. 
+Do not specify it on the command line but using the prompt, see call example.<br><br>
+                <div class="row">
+                  <div class="col-md-4 col-xs-4">
+                    Required?<br>
+                    Position?<br>
+                    Default value<br>
+                    Accept pipeline input?<br>
+                    Accept wildchard characters?
+                  </div>
+                  <div class="col-md-6 col-xs-6">
+                    true<br>
+                    2<br>
+                    <br>
+                    false<br>
+                    false
+                  </div>
+                </div>
+                <br>
+              </dd>
+            </dl>
+            <h3 id="Backup-Data-APK-Inputs">Inputs</h3>
+            <p>None. You cannot pipe objects to this function.</p>
+            <h3 id="Backup-Data-APK-Outputs">Outputs</h3>
+            <p></p>
+            <h3 id="Backup-Data-APK-Examples">Examples</h3>
+            <b>Example 1</b>
+            <pre>Backup-Data-APK -appPkg my.app.package</pre>
+            <p><br><br><br><br></p>
+            <br>
+            <h3 id="Backup-Data-APK-RelatedLinks">RelatedLinks</h3>
+            <p><a href="https://github.com/nelenkov/android-backup-extractor">https://github.com/nelenkov/android-backup-extractor</a></p>
+            <h3 id="Backup-Data-APK-Notes">Notes</h3>
+            <p></p>
+            <br>
+          </div>
+        </div>
+        <!-- End ConvertFrom-HexIP -->
+        <!-- Compress-APK -->
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h2 id="Compress-APK-Header">Compress-APK</h1>
+          </div>
+          <div class="panel-body">
+            <h3 id="Compress-APK-Synopsis">Synopsis</h3>
+            <p></p>
+            <h3 id="Compress-APK-Syntax">Syntax</h3>
+            <pre>Compress-APK</pre>
+            <h3 id="Compress-APK-Description">Description</h3>
+            <p>Repack and sign an APK using APKTOOL + ZIPALIGN + APKSIGNER instances present in PATH environment variable.</p>
+            <h3 id="Compress-APK-Parameters">Parameters</h3>
+            <dl class="dl-horizontal">
+            </dl>
+            <h3 id="Compress-APK-Inputs">Inputs</h3>
+            <p>None. You cannot pipe objects to this function.</p>
+            <h3 id="Compress-APK-Outputs">Outputs</h3>
+            <p></p>
+            <h3 id="Compress-APK-Examples">Examples</h3>
+            <b>Example 1</b>
+            <pre>Compress-APK</pre>
+            <p><br><br><br><br></p>
+            <br>
+            <h3 id="Compress-APK-RelatedLinks">RelatedLinks</h3>
+            <p><a href=""></a></p>
+            <h3 id="Compress-APK-Notes">Notes</h3>
+            <p></p>
+            <br>
+          </div>
+        </div>
+        <!-- End ConvertFrom-HexIP -->
+        <!-- Expand-APK -->
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h2 id="Expand-APK-Header">Expand-APK</h1>
+          </div>
+          <div class="panel-body">
+            <h3 id="Expand-APK-Synopsis">Synopsis</h3>
+            <p></p>
+            <h3 id="Expand-APK-Syntax">Syntax</h3>
+            <pre>Expand-APK -apkLocation &lt;String&gt;</pre>
+            <h3 id="Expand-APK-Description">Description</h3>
+            <p>Depack an APK using APKTOOL instance present in PATH environment variable.</p>
+            <h3 id="Expand-APK-Parameters">Parameters</h3>
+            <dl class="dl-horizontal">
+              <dt data-toggle="tooltip" title="apkLocation">-apkLocation</dt>
+              <dd>&lt;String&gt;<br>
+                Path to the APK to depack.<br><br>
+                <div class="row">
+                  <div class="col-md-4 col-xs-4">
+                    Required?<br>
+                    Position?<br>
+                    Default value<br>
+                    Accept pipeline input?<br>
+                    Accept wildchard characters?
+                  </div>
+                  <div class="col-md-6 col-xs-6">
+                    true<br>
+                    1<br>
+                    <br>
+                    false<br>
+                    false
+                  </div>
+                </div>
+                <br>
+              </dd>
+            </dl>
+            <h3 id="Expand-APK-Inputs">Inputs</h3>
+            <p>None. You cannot pipe objects to this function.</p>
+            <h3 id="Expand-APK-Outputs">Outputs</h3>
+            <p></p>
+            <h3 id="Expand-APK-Examples">Examples</h3>
+            <b>Example 1</b>
+            <pre>Expand-APK -apkLocation app.apk</pre>
+            <p><br><br><br><br></p>
+            <br>
+            <h3 id="Expand-APK-RelatedLinks">RelatedLinks</h3>
+            <p><a href=""></a></p>
+            <h3 id="Expand-APK-Notes">Notes</h3>
+            <p></p>
+            <br>
+          </div>
+        </div>
+        <!-- End ConvertFrom-HexIP -->
+        <!-- Find-Framework -->
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h2 id="Find-Framework-Header">Find-Framework</h1>
+          </div>
+          <div class="panel-body">
+            <h3 id="Find-Framework-Synopsis">Synopsis</h3>
+            <p></p>
+            <h3 id="Find-Framework-Syntax">Syntax</h3>
+            <pre>Find-Framework -apkLocation &lt;String&gt;</pre>
+            <h3 id="Find-Framework-Description">Description</h3>
+            <p>Try to find if the APK use a framwework used to generate native app.</p>
+            <h3 id="Find-Framework-Parameters">Parameters</h3>
+            <dl class="dl-horizontal">
+              <dt data-toggle="tooltip" title="apkLocation">-apkLocation</dt>
+              <dd>&lt;String&gt;<br>
+                Path to the APK to analyze.<br><br>
+                <div class="row">
+                  <div class="col-md-4 col-xs-4">
+                    Required?<br>
+                    Position?<br>
+                    Default value<br>
+                    Accept pipeline input?<br>
+                    Accept wildchard characters?
+                  </div>
+                  <div class="col-md-6 col-xs-6">
+                    true<br>
+                    1<br>
+                    <br>
+                    false<br>
+                    false
+                  </div>
+                </div>
+                <br>
+              </dd>
+            </dl>
+            <h3 id="Find-Framework-Inputs">Inputs</h3>
+            <p>None. You cannot pipe objects to this function.</p>
+            <h3 id="Find-Framework-Outputs">Outputs</h3>
+            <p></p>
+            <h3 id="Find-Framework-Examples">Examples</h3>
+            <b>Example 1</b>
+            <pre>Find-Framework -apkLocation app.apk</pre>
+            <p><br><br><br><br></p>
+            <br>
+            <h3 id="Find-Framework-RelatedLinks">RelatedLinks</h3>
+            <p><a href=""></a></p>
+            <h3 id="Find-Framework-Notes">Notes</h3>
+            <p></p>
+            <br>
+          </div>
+        </div>
+        <!-- End ConvertFrom-HexIP -->
+        <!-- Get-APK -->
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h2 id="Get-APK-Header">Get-APK</h1>
+          </div>
+          <div class="panel-body">
+            <h3 id="Get-APK-Synopsis">Synopsis</h3>
+            <p></p>
+            <h3 id="Get-APK-Syntax">Syntax</h3>
+            <pre>Get-APK -appPkg &lt;String&gt;</pre>
+            <h3 id="Get-APK-Description">Description</h3>
+            <p>Get the APK from the provided package name on the current connected device using the current connected ADB instance.</p>
+            <h3 id="Get-APK-Parameters">Parameters</h3>
+            <dl class="dl-horizontal">
+              <dt data-toggle="tooltip" title="appPkg">-appPkg</dt>
+              <dd>&lt;String&gt;<br>
+                Package name of the application.<br><br>
+                <div class="row">
+                  <div class="col-md-4 col-xs-4">
+                    Required?<br>
+                    Position?<br>
+                    Default value<br>
+                    Accept pipeline input?<br>
+                    Accept wildchard characters?
+                  </div>
+                  <div class="col-md-6 col-xs-6">
+                    true<br>
+                    1<br>
+                    <br>
+                    false<br>
+                    false
+                  </div>
+                </div>
+                <br>
+              </dd>
+            </dl>
+            <h3 id="Get-APK-Inputs">Inputs</h3>
+            <p>None. You cannot pipe objects to this function.</p>
+            <h3 id="Get-APK-Outputs">Outputs</h3>
+            <p></p>
+            <h3 id="Get-APK-Examples">Examples</h3>
+            <b>Example 1</b>
+            <pre>Get-APK -appPkg my.app.package</pre>
+            <p><br><br><br><br></p>
+            <br>
+            <h3 id="Get-APK-RelatedLinks">RelatedLinks</h3>
+            <p><a href=""></a></p>
+            <h3 id="Get-APK-Notes">Notes</h3>
+            <p></p>
+            <br>
+          </div>
+        </div>
+        <!-- End ConvertFrom-HexIP -->
+        <!-- Get-Memory-Dump -->
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h2 id="Get-Memory-Dump-Header">Get-Memory-Dump</h1>
+          </div>
+          <div class="panel-body">
+            <h3 id="Get-Memory-Dump-Synopsis">Synopsis</h3>
+            <p></p>
+            <h3 id="Get-Memory-Dump-Syntax">Syntax</h3>
+            <pre>Get-Memory-Dump -appPkg &lt;String&gt;</pre>
+            <h3 id="Get-Memory-Dump-Description">Description</h3>
+            <p>Take a memory dump of the process of the application specified on the current connected device using the current connected ADB instance and download it into the current folder (dump file is removed after the download).</p>
+            <h3 id="Get-Memory-Dump-Parameters">Parameters</h3>
+            <dl class="dl-horizontal">
+              <dt data-toggle="tooltip" title="appPkg">-appPkg</dt>
+              <dd>&lt;String&gt;<br>
+                Package name of the application.<br><br>
+                <div class="row">
+                  <div class="col-md-4 col-xs-4">
+                    Required?<br>
+                    Position?<br>
+                    Default value<br>
+                    Accept pipeline input?<br>
+                    Accept wildchard characters?
+                  </div>
+                  <div class="col-md-6 col-xs-6">
+                    true<br>
+                    1<br>
+                    <br>
+                    false<br>
+                    false
+                  </div>
+                </div>
+                <br>
+              </dd>
+            </dl>
+            <h3 id="Get-Memory-Dump-Inputs">Inputs</h3>
+            <p>None. You cannot pipe objects to this function.</p>
+            <h3 id="Get-Memory-Dump-Outputs">Outputs</h3>
+            <p></p>
+            <h3 id="Get-Memory-Dump-Examples">Examples</h3>
+            <b>Example 1</b>
+            <pre>Get-Memory-Dump -appPkg my.app.package</pre>
+            <p><br><br><br><br></p>
+            <br>
+            <h3 id="Get-Memory-Dump-RelatedLinks">RelatedLinks</h3>
+            <p><a href=""></a></p>
+            <h3 id="Get-Memory-Dump-Notes">Notes</h3>
+            <p></p>
+            <br>
+          </div>
+        </div>
+        <!-- End ConvertFrom-HexIP -->
+        <!-- Get-Packages -->
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h2 id="Get-Packages-Header">Get-Packages</h1>
+          </div>
+          <div class="panel-body">
+            <h3 id="Get-Packages-Synopsis">Synopsis</h3>
+            <p></p>
+            <h3 id="Get-Packages-Syntax">Syntax</h3>
+            <pre>Get-Packages</pre>
+            <h3 id="Get-Packages-Description">Description</h3>
+            <p>List installed packages on the current connected device using the current connected ADB instance.</p>
+            <h3 id="Get-Packages-Parameters">Parameters</h3>
+            <dl class="dl-horizontal">
+            </dl>
+            <h3 id="Get-Packages-Inputs">Inputs</h3>
+            <p></p>
+            <h3 id="Get-Packages-Outputs">Outputs</h3>
+            <p></p>
+            <h3 id="Get-Packages-Examples">Examples</h3>
+            <b>Example 1</b>
+            <pre>Get-Packages</pre>
+            <p><br><br><br><br></p>
+            <br>
+            <h3 id="Get-Packages-RelatedLinks">RelatedLinks</h3>
+            <p><a href=""></a></p>
+            <h3 id="Get-Packages-Notes">Notes</h3>
+            <p></p>
+            <br>
+          </div>
+        </div>
+        <!-- End ConvertFrom-HexIP -->
+        <!-- Get-Screenrecord -->
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h2 id="Get-Screenrecord-Header">Get-Screenrecord</h1>
+          </div>
+          <div class="panel-body">
+            <h3 id="Get-Screenrecord-Synopsis">Synopsis</h3>
+            <p></p>
+            <h3 id="Get-Screenrecord-Syntax">Syntax</h3>
+            <pre>Get-Screenrecord</pre>
+            <h3 id="Get-Screenrecord-Description">Description</h3>
+            <p>Take a screen recording on the current connected device using the current connected ADB instance and download it into the current folder (video is removed after the download).</p>
+            <h3 id="Get-Screenrecord-Parameters">Parameters</h3>
+            <dl class="dl-horizontal">
+            </dl>
+            <h3 id="Get-Screenrecord-Inputs">Inputs</h3>
+            <p></p>
+            <h3 id="Get-Screenrecord-Outputs">Outputs</h3>
+            <p></p>
+            <h3 id="Get-Screenrecord-Examples">Examples</h3>
+            <b>Example 1</b>
+            <pre>Get-Screenrecord</pre>
+            <p><br><br><br><br></p>
+            <br>
+            <h3 id="Get-Screenrecord-RelatedLinks">RelatedLinks</h3>
+            <p><a href=""></a></p>
+            <h3 id="Get-Screenrecord-Notes">Notes</h3>
+            <p></p>
+            <br>
+          </div>
+        </div>
+        <!-- End ConvertFrom-HexIP -->
+        <!-- Get-Screenshot -->
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h2 id="Get-Screenshot-Header">Get-Screenshot</h1>
+          </div>
+          <div class="panel-body">
+            <h3 id="Get-Screenshot-Synopsis">Synopsis</h3>
+            <p></p>
+            <h3 id="Get-Screenshot-Syntax">Syntax</h3>
+            <pre>Get-Screenshot</pre>
+            <h3 id="Get-Screenshot-Description">Description</h3>
+            <p>Take a screenshot on the current connected device using the current connected ADB instance and download it into the current folder (image is removed after the download).</p>
+            <h3 id="Get-Screenshot-Parameters">Parameters</h3>
+            <dl class="dl-horizontal">
+            </dl>
+            <h3 id="Get-Screenshot-Inputs">Inputs</h3>
+            <p></p>
+            <h3 id="Get-Screenshot-Outputs">Outputs</h3>
+            <p></p>
+            <h3 id="Get-Screenshot-Examples">Examples</h3>
+            <b>Example 1</b>
+            <pre>Get-Screenshot</pre>
+            <p><br><br><br><br></p>
+            <br>
+            <h3 id="Get-Screenshot-RelatedLinks">RelatedLinks</h3>
+            <p><a href=""></a></p>
+            <h3 id="Get-Screenshot-Notes">Notes</h3>
+            <p></p>
+            <br>
+          </div>
+        </div>
+        <!-- End ConvertFrom-HexIP -->
+        <!-- Install-APK -->
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h2 id="Install-APK-Header">Install-APK</h1>
+          </div>
+          <div class="panel-body">
+            <h3 id="Install-APK-Synopsis">Synopsis</h3>
+            <p></p>
+            <h3 id="Install-APK-Syntax">Syntax</h3>
+            <pre>Install-APK -appPkg &lt;String&gt;</pre>
+            <h3 id="Install-APK-Description">Description</h3>
+            <p>Re-Install patched application using the current connected ADB instance.</p>
+            <h3 id="Install-APK-Parameters">Parameters</h3>
+            <dl class="dl-horizontal">
+              <dt data-toggle="tooltip" title="appPkg">-appPkg</dt>
+              <dd>&lt;String&gt;<br>
+                Package name of the application.<br><br>
+                <div class="row">
+                  <div class="col-md-4 col-xs-4">
+                    Required?<br>
+                    Position?<br>
+                    Default value<br>
+                    Accept pipeline input?<br>
+                    Accept wildchard characters?
+                  </div>
+                  <div class="col-md-6 col-xs-6">
+                    true<br>
+                    1<br>
+                    <br>
+                    false<br>
+                    false
+                  </div>
+                </div>
+                <br>
+              </dd>
+            </dl>
+            <h3 id="Install-APK-Inputs">Inputs</h3>
+            <p>None. You cannot pipe objects to this function.</p>
+            <h3 id="Install-APK-Outputs">Outputs</h3>
+            <p></p>
+            <h3 id="Install-APK-Examples">Examples</h3>
+            <b>Example 1</b>
+            <pre>Install-APK -appPkg my.app.package</pre>
+            <p><br><br><br><br></p>
+            <br>
+            <h3 id="Install-APK-RelatedLinks">RelatedLinks</h3>
+            <p><a href=""></a></p>
+            <h3 id="Install-APK-Notes">Notes</h3>
+            <p></p>
+            <br>
+          </div>
+        </div>
+        <!-- End ConvertFrom-HexIP -->
+        <!-- Show-Android-Functions -->
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h2 id="Show-Android-Functions-Header">Show-Android-Functions</h1>
+          </div>
+          <div class="panel-body">
+            <h3 id="Show-Android-Functions-Synopsis">Synopsis</h3>
+            <p></p>
+            <h3 id="Show-Android-Functions-Syntax">Syntax</h3>
+            <pre>Show-Android-Functions</pre>
+            <h3 id="Show-Android-Functions-Description">Description</h3>
+            <p>Show the available functions exposed by the &quot;Android-Utils&quot; module.</p>
+            <h3 id="Show-Android-Functions-Parameters">Parameters</h3>
+            <dl class="dl-horizontal">
+            </dl>
+            <h3 id="Show-Android-Functions-Inputs">Inputs</h3>
+            <p>None. You cannot pipe objects to this function.</p>
+            <h3 id="Show-Android-Functions-Outputs">Outputs</h3>
+            <p></p>
+            <h3 id="Show-Android-Functions-Examples">Examples</h3>
+            <b>Example 1</b>
+            <pre>Show-Android-Functions</pre>
+            <p><br><br><br><br></p>
+            <br>
+            <h3 id="Show-Android-Functions-RelatedLinks">RelatedLinks</h3>
+            <p><a href="https://github.com/righettod/powershell-android-utils">https://github.com/righettod/powershell-android-utils</a></p>
+            <h3 id="Show-Android-Functions-Notes">Notes</h3>
+            <p></p>
+            <br>
+          </div>
+        </div>
+        <!-- End ConvertFrom-HexIP -->
+        <!-- Show-Signature-APK -->
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h2 id="Show-Signature-APK-Header">Show-Signature-APK</h1>
+          </div>
+          <div class="panel-body">
+            <h3 id="Show-Signature-APK-Synopsis">Synopsis</h3>
+            <p></p>
+            <h3 id="Show-Signature-APK-Syntax">Syntax</h3>
+            <pre>Show-Signature-APK -apkLocation &lt;String&gt;</pre>
+            <h3 id="Show-Signature-APK-Description">Description</h3>
+            <p>Show the APK signature using APKSIGNER instance present in PATH environment variable.</p>
+            <h3 id="Show-Signature-APK-Parameters">Parameters</h3>
+            <dl class="dl-horizontal">
+              <dt data-toggle="tooltip" title="apkLocation">-apkLocation</dt>
+              <dd>&lt;String&gt;<br>
+                Path to the APK for which the signature must be displayed.<br><br>
+                <div class="row">
+                  <div class="col-md-4 col-xs-4">
+                    Required?<br>
+                    Position?<br>
+                    Default value<br>
+                    Accept pipeline input?<br>
+                    Accept wildchard characters?
+                  </div>
+                  <div class="col-md-6 col-xs-6">
+                    true<br>
+                    1<br>
+                    <br>
+                    false<br>
+                    false
+                  </div>
+                </div>
+                <br>
+              </dd>
+            </dl>
+            <h3 id="Show-Signature-APK-Inputs">Inputs</h3>
+            <p>None. You cannot pipe objects to this function.</p>
+            <h3 id="Show-Signature-APK-Outputs">Outputs</h3>
+            <p></p>
+            <h3 id="Show-Signature-APK-Examples">Examples</h3>
+            <b>Example 1</b>
+            <pre>Show-Signature-AP -apkLocation app.apk</pre>
+            <p><br><br><br><br></p>
+            <br>
+            <h3 id="Show-Signature-APK-RelatedLinks">RelatedLinks</h3>
+            <p><a href=""></a></p>
+            <h3 id="Show-Signature-APK-Notes">Notes</h3>
+            <p></p>
+            <br>
+          </div>
+        </div>
+        <!-- End ConvertFrom-HexIP -->
+        <!-- Test-Tools -->
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h2 id="Test-Tools-Header">Test-Tools</h1>
+          </div>
+          <div class="panel-body">
+            <h3 id="Test-Tools-Synopsis">Synopsis</h3>
+            <p></p>
+            <h3 id="Test-Tools-Syntax">Syntax</h3>
+            <pre>Test-Tools</pre>
+            <h3 id="Test-Tools-Description">Description</h3>
+            <p>Check availability of used Android tools.</p>
+            <h3 id="Test-Tools-Parameters">Parameters</h3>
+            <dl class="dl-horizontal">
+            </dl>
+            <h3 id="Test-Tools-Inputs">Inputs</h3>
+            <p>None. You cannot pipe objects to this function.</p>
+            <h3 id="Test-Tools-Outputs">Outputs</h3>
+            <p></p>
+            <h3 id="Test-Tools-Examples">Examples</h3>
+            <b>Example 1</b>
+            <pre>Test-Tools</pre>
+            <p><br><br><br><br></p>
+            <br>
+            <h3 id="Test-Tools-RelatedLinks">RelatedLinks</h3>
+            <p><a href=""></a></p>
+            <h3 id="Test-Tools-Notes">Notes</h3>
+            <p></p>
+            <br>
+          </div>
+        </div>
+        <!-- End ConvertFrom-HexIP -->
+        <!-- Watch-Log -->
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h2 id="Watch-Log-Header">Watch-Log</h1>
+          </div>
+          <div class="panel-body">
+            <h3 id="Watch-Log-Synopsis">Synopsis</h3>
+            <p></p>
+            <h3 id="Watch-Log-Syntax">Syntax</h3>
+            <pre>Watch-Log [-marker &lt;String&gt;] [-tag &lt;String&gt;] [-priority &lt;String&gt;]</pre>
+            <h3 id="Watch-Log-Description">Description</h3>
+            <p>Show the device log applying the provided filter on current connected device using the current connected ADB instance.</p>
+            <h3 id="Watch-Log-Parameters">Parameters</h3>
+            <dl class="dl-horizontal">
+              <dt data-toggle="tooltip" title="marker">-marker</dt>
+              <dd>&lt;String&gt;<br>
+                Filtering expression used as regex.<br><br>
+                <div class="row">
+                  <div class="col-md-4 col-xs-4">
+                    Required?<br>
+                    Position?<br>
+                    Default value<br>
+                    Accept pipeline input?<br>
+                    Accept wildchard characters?
+                  </div>
+                  <div class="col-md-6 col-xs-6">
+                    false<br>
+                    1<br>
+                    <br>
+                    false<br>
+                    false
+                  </div>
+                </div>
+                <br>
+              </dd>
+              <dt data-toggle="tooltip" title="tag">-tag</dt>
+              <dd>&lt;String&gt;<br>
+                Filtering expression used as Android logging TAG.<br><br>
+                <div class="row">
+                  <div class="col-md-4 col-xs-4">
+                    Required?<br>
+                    Position?<br>
+                    Default value<br>
+                    Accept pipeline input?<br>
+                    Accept wildchard characters?
+                  </div>
+                  <div class="col-md-6 col-xs-6">
+                    false<br>
+                    2<br>
+                    <br>
+                    false<br>
+                    false
+                  </div>
+                </div>
+                <br>
+              </dd>
+              <dt data-toggle="tooltip" title="priority">-priority</dt>
+              <dd>&lt;String&gt;<br>
+                Filtering log priority ordered from lowest to highest priority (single character in the following range):
+(V)erbose / (D)ebug / (I)nfo / (W)arning / (E)rror / (F)atal / (S)ilent.<br><br>
+                <div class="row">
+                  <div class="col-md-4 col-xs-4">
+                    Required?<br>
+                    Position?<br>
+                    Default value<br>
+                    Accept pipeline input?<br>
+                    Accept wildchard characters?
+                  </div>
+                  <div class="col-md-6 col-xs-6">
+                    false<br>
+                    3<br>
+                    <br>
+                    false<br>
+                    false
+                  </div>
+                </div>
+                <br>
+              </dd>
+            </dl>
+            <h3 id="Watch-Log-Inputs">Inputs</h3>
+            <p>None. You cannot pipe objects to this function.</p>
+            <h3 id="Watch-Log-Outputs">Outputs</h3>
+            <p></p>
+            <h3 id="Watch-Log-Examples">Examples</h3>
+            <b>Example 1</b>
+            <pre>Watch-Log -marker &quot;Wifi&quot;</pre>
+            <p><br><br><br><br></p>
+            <br>
+            <b>Example 2</b>
+            <pre>Watch-Log -marker &quot;^(.*(Patched).*)$&quot;</pre>
+            <p><br><br><br><br></p>
+            <br>
+            <b>Example 3</b>
+            <pre>Watch-Log -tag &quot;APP_TAG&quot;</pre>
+            <p><br><br><br><br></p>
+            <br>
+            <b>Example 4</b>
+            <pre>Watch-Log -tag &quot;APP_TAG&quot; -priority I</pre>
+            <p><br><br><br><br></p>
+            <br>
+            <b>Example 5</b>
+            <pre>Watch-Log -priority I</pre>
+            <p><br><br><br><br></p>
+            <br>
+            <h3 id="Watch-Log-RelatedLinks">RelatedLinks</h3>
+            <p><a href="https://developer.android.com/studio/command-line/logcat#filteringOutput">https://developer.android.com/studio/command-line/logcat#filteringOutput</a></p>
+            <h3 id="Watch-Log-Notes">Notes</h3>
+            <p></p>
+            <br>
+          </div>
+        </div>
+        <!-- End ConvertFrom-HexIP -->
+        </div>
+    </div><!-- /.container -->
+    <script src="jquery-1.11.1.min.js"></script>    <script src="bootstrap.min.js"></script>
+    <script src="jasny-bootstrap.min.js"></script>
+    <script>$('body').scrollspy({ target: '.sidebar-nav' })</script>
+    <script>
+      $('[data-spy="scroll"]').on("load", function () {
+        var $spy = $(this).scrollspy('refresh')
+    })
+    </script>
+  </body>
+</html>
