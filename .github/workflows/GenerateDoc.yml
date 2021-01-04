@@ -9,3 +9,9 @@ jobs:
       - name: Generate the documentation
         run: .\Create-Module-Documentation.ps1
         shell: powershell
+      - name: Commit and push the generated content
+        run: |
+          git config --global user.email "github-action-job@github.com"
+          git config --global user.name "GitHubActionJob"
+          git commit -m "Update version with freshly generated content." docs/index.html
+          git push
