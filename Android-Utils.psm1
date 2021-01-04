@@ -492,6 +492,9 @@ function Get-Memory-Dump {
     adb pull /data/local/tmp/memory-dump.hprof .
     adb shell rm /data/local/tmp/memory-dump.hprof
     adb shell rm /data/local/tmp/memory-dump.sh
+	Write-Host "Create a standard version of the HPROF file from the obtained Android format HPROF file 'memory-dump.hprof'..." -ForegroundColor Green
+	hprof-conv memory-dump.hprof memory-dump-standard.hprof
+	Get-ChildItem -Path . -Include *.hprof -Name
 }
 
 <#
