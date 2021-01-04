@@ -18,6 +18,10 @@
     .EXAMPLE
 
     PS> Show-Signature-AP -apkLocation app.apk
+	
+    .LINK
+    
+    https://source.android.com/security/apksigning
 #>
 function Show-Signature-APK {
     [CmdletBinding()]
@@ -351,6 +355,16 @@ function Show-Android-Functions(){
     .EXAMPLE
 
     PS> Find-Framework -apkLocation app.apk
+	
+    .LINK
+    
+    https://dotnet.microsoft.com/apps/xamarin
+	
+	https://cordova.apache.org/
+	
+	https://reactnative.dev/
+	
+	https://flutter.dev
 #>
 function Find-Framework {
     [CmdletBinding()]
@@ -406,6 +420,8 @@ function Find-Framework {
     .LINK
     
     https://github.com/nelenkov/android-backup-extractor
+	
+	https://developer.android.com/guide/topics/data/backup
 #>
 function Backup-Data-APK{
    [CmdletBinding()]
@@ -467,6 +483,12 @@ function Get-Screenshot {
     .EXAMPLE
 
     PS> Get-Memory-Dump -appPkg my.app.package  
+	
+    .LINK
+    
+    https://developer.android.com/studio/profile/memory-profiler
+	
+	https://docs.oracle.com/javase/7/docs/technotes/tools/share/jhat.html
 #>
 function Get-Memory-Dump {
     [CmdletBinding()]
