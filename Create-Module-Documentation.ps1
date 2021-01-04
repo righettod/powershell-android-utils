@@ -1,4 +1,5 @@
 # Create required elements
+cd docs
 $cdir=Get-Location
 Remove-Item Invoke-CreateModuleHelpFile.ps1 -ErrorAction Ignore -Force
 Remove-Item modules -ErrorAction Ignore -Force  -Recurse
