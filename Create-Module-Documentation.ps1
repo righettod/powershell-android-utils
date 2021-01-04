@@ -6,6 +6,7 @@ Remove-Item modules -ErrorAction Ignore -Force  -Recurse
 New-Item -Path "." -Name "modules" -ItemType "directory"
 New-Item -Path "modules" -Name "Android-Utils" -ItemType "directory"
 Copy-Item "..\Android-Utils.psm1" -Destination ".\modules\Android-Utils"
+Copy-Item "..\Android-Utils.psd1" -Destination ".\modules\Android-Utils"
 wget "https://raw.githubusercontent.com/gravejester/Invoke-CreateModuleHelpFile/master/Invoke-CreateModuleHelpFile.ps1" -outfile "Invoke-CreateModuleHelpFile.ps1"
 # Generate the documentation HTML file
 . .\Invoke-CreateModuleHelpFile.ps1

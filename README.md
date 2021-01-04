@@ -1,3 +1,5 @@
+![GenerateDocumentation](https://github.com/righettod/powershell-android-utils/workflows/GenerateDocumentation/badge.svg?branch=master)
+
 # Description
 
 PowerShell module providing utility commands to manipulate a APK file on Windows.
@@ -7,6 +9,10 @@ This module can be combined with the tool [objection](https://github.com/sensepo
 1. Use the module to alter the original APK in order to prepare it to be passed to **objection** for patching:
 	* Example of alteration: Change a value in a Flutter or Cordova configuration file, disable a option in the network security configuration file, disable a flag in the Smali code, etc.
 2. Patch the APK with [objection](https://github.com/sensepost/objection/wiki/Patching-Android-Applications).
+
+# Online documentation
+
+:book: See [here](https://righettod.github.io/powershell-android-utils/).
 
 # Requirements
 
