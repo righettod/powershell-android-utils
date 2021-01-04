@@ -360,9 +360,15 @@ function Show-Android-Functions(){
     
     https://dotnet.microsoft.com/apps/xamarin
 	
+	.LINK
+	
 	https://cordova.apache.org/
 	
+	.LINK
+	
 	https://reactnative.dev/
+	
+	.LINK
 	
 	https://flutter.dev
 #>
@@ -420,6 +426,8 @@ function Find-Framework {
     .LINK
     
     https://github.com/nelenkov/android-backup-extractor
+	
+	.LINK
 	
 	https://developer.android.com/guide/topics/data/backup
 #>
@@ -487,6 +495,8 @@ function Get-Screenshot {
     .LINK
     
     https://developer.android.com/studio/profile/memory-profiler
+	
+	.LINK
 	
 	https://docs.oracle.com/javase/7/docs/technotes/tools/share/jhat.html
 #>
