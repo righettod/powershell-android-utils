@@ -46,20 +46,20 @@ PS> Show-Android-Functions
 
 CommandType     Name                                               Version    Source
 -----------     ----                                               -------    ------
-Function        Backup-Data-APK                                    0.0        Android-Utils
-Function        Compress-APK                                       0.0        Android-Utils
-Function        Expand-APK                                         0.0        Android-Utils
-Function        Find-Framework                                     0.0        Android-Utils
-Function        Get-APK                                            0.0        Android-Utils
-Function        Get-Memory-Dump                                    0.0        Android-Utils
-Function        Get-Packages                                       0.0        Android-Utils
-Function        Get-Screenrecord                                   0.0        Android-Utils
-Function        Get-Screenshot                                     0.0        Android-Utils
-Function        Install-APK                                        0.0        Android-Utils
-Function        Show-Android-Functions                             0.0        Android-Utils
-Function        Show-Signature-APK                                 0.0        Android-Utils
-Function        Test-Tools                                         0.0        Android-Utils
-Function        Watch-Log                                          0.0        Android-Utils
+Function        Backup-Data-APK                                    1.0        Android-Utils
+Function        Compress-APK                                       1.0        Android-Utils
+Function        Expand-APK                                         1.0        Android-Utils
+Function        Find-Framework                                     1.0        Android-Utils
+Function        Get-APK                                            1.0        Android-Utils
+Function        Get-Memory-Dump                                    1.0        Android-Utils
+Function        Get-Packages                                       1.0        Android-Utils
+Function        Get-Screenrecord                                   1.0        Android-Utils
+Function        Get-Screenshot                                     1.0        Android-Utils
+Function        Install-APK                                        1.0        Android-Utils
+Function        Show-Android-Functions                             1.0        Android-Utils
+Function        Show-Signature-APK                                 1.0        Android-Utils
+Function        Test-Tools                                         1.0        Android-Utils
+Function        Watch-Log                                          1.0        Android-Utils
 
 PS> Test-Tools
 Ensure that the following Android SDK folders are added to the PATH environment variable:
