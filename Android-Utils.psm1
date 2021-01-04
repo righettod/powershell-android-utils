@@ -86,7 +86,7 @@ function Expand-APK {
 #>
 function Compress-APK {
     $keystoreLocation = (Get-Module -ListAvailable Android-Utils).path
-    $keystoreLocation = $keystoreLocation.Replace("Android-Utils.psm1", "my.keystore")
+    $keystoreLocation = $keystoreLocation.Replace("Android-Utils.psd1", "my.keystore")
     Write-Host "Repacking folder 'out' to 'app-updated.apk' file using keystore '$keystoreLocation'..." -ForegroundColor Green
     Remove-Item app-updated.apk -Recurse -ErrorAction Ignore
     apktool b --use-aapt2 -d out/ -o app-updated.apk
@@ -443,7 +443,7 @@ function Backup-Data-APK{
     )
     Write-Host "Backup the application data of the package name '$appPkg' to file 'backup.tar'..." -ForegroundColor Green
     $abeLocation = (Get-Module -ListAvailable Android-Utils).path
-    $abeLocation = $abeLocation.Replace("Android-Utils.psm1", "abe-all.jar")
+    $abeLocation = $abeLocation.Replace("Android-Utils.psd1", "abe-all.jar")
     Remove-Item backup.ab -Recurse -ErrorAction Ignore
     Remove-Item backup.tar -Recurse -ErrorAction Ignore
     adb backup -f backup.ab -apk $appPkg
@@ -508,7 +508,7 @@ function Get-Memory-Dump {
         $appPkg
     )
     $dumpScriptLocation = (Get-Module -ListAvailable Android-Utils).path
-    $dumpScriptLocation = $dumpScriptLocation.Replace("Android-Utils.psm1", "memory-dump.sh")
+    $dumpScriptLocation = $dumpScriptLocation.Replace("Android-Utils.psd1", "memory-dump.sh")
     $appPid = adb shell pidof -s $appPkg
     $tmp = "";
     foreach ($char in $appPid.ToCharArray()){
