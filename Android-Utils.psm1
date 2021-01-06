@@ -358,19 +358,7 @@ function Show-Android-Functions(){
 	
     .LINK
     
-    https://dotnet.microsoft.com/apps/xamarin
-	
-	.LINK
-	
-	https://cordova.apache.org/
-	
-	.LINK
-	
-	https://reactnative.dev/
-	
-	.LINK
-	
-	https://flutter.dev
+    https://medium.com/javarevisited/top-5-frameworks-to-create-cross-platform-android-and-ios-apps-in-2020-d02edf3d01f1
 #>
 function Find-Framework {
     [CmdletBinding()]
@@ -426,10 +414,6 @@ function Find-Framework {
     .LINK
     
     https://github.com/nelenkov/android-backup-extractor
-	
-	.LINK
-	
-	https://developer.android.com/guide/topics/data/backup
 #>
 function Backup-Data-APK{
    [CmdletBinding()]
@@ -495,10 +479,6 @@ function Get-Screenshot {
     .LINK
     
     https://developer.android.com/studio/profile/memory-profiler
-	
-	.LINK
-	
-	https://docs.oracle.com/javase/7/docs/technotes/tools/share/jhat.html
 #>
 function Get-Memory-Dump {
     [CmdletBinding()]
