@@ -705,32 +705,11 @@ Do not specify it on the command line but using the prompt, see call example.<br
             <h3 id="Install-APK-Synopsis">Synopsis</h3>
             <p></p>
             <h3 id="Install-APK-Syntax">Syntax</h3>
-            <pre>Install-APK -appPkg &lt;String&gt;</pre>
+            <pre>Install-APK</pre>
             <h3 id="Install-APK-Description">Description</h3>
-            <p>Re-Install patched application using the current connected ADB instance.</p>
+            <p>Re-Install patched application (replace app with the same package name) using the current connected ADB instance.</p>
             <h3 id="Install-APK-Parameters">Parameters</h3>
             <dl class="dl-horizontal">
-              <dt data-toggle="tooltip" title="appPkg">-appPkg</dt>
-              <dd>&lt;String&gt;<br>
-                Package name of the application.<br><br>
-                <div class="row">
-                  <div class="col-md-4 col-xs-4">
-                    Required?<br>
-                    Position?<br>
-                    Default value<br>
-                    Accept pipeline input?<br>
-                    Accept wildchard characters?
-                  </div>
-                  <div class="col-md-6 col-xs-6">
-                    true<br>
-                    1<br>
-                    <br>
-                    false<br>
-                    false
-                  </div>
-                </div>
-                <br>
-              </dd>
             </dl>
             <h3 id="Install-APK-Inputs">Inputs</h3>
             <p>None. You cannot pipe objects to this function.</p>
@@ -738,7 +717,7 @@ Do not specify it on the command line but using the prompt, see call example.<br
             <p></p>
             <h3 id="Install-APK-Examples">Examples</h3>
             <b>Example 1</b>
-            <pre>Install-APK -appPkg my.app.package</pre>
+            <pre>Install-APK</pre>
             <p><br><br><br><br></p>
             <br>
             <h3 id="Install-APK-RelatedLinks">RelatedLinks</h3>
