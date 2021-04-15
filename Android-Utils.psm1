@@ -526,5 +526,28 @@ function Get-Screenrecord {
     }
 }
 
+<#
+    .DESCRIPTION
+
+    Cast the current USB connected device screen to the current computer using SCRCPY tool from Genymobile.
+
+    .OUTPUTS
+
+    System. String. The output of the tools used.         
+
+    .EXAMPLE
+
+    PS> Show-Device-Screen
+	
+    .LINK
+    
+    https://github.com/Genymobile/scrcpy
+#>
+function Show-Device-Screen {
+    $binaryLocation = (Get-Module -ListAvailable Android-Utils).path
+    $binaryLocation = $binaryLocation.Replace("Android-Utils.psd1", "scrcpy\scrcpy.exe")
+	& $binaryLocation
+}
+
 # Define exported functions
 Export-ModuleMember -Function *
