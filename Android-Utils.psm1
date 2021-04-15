@@ -99,11 +99,7 @@ function Compress-APK {
 <#
     .DESCRIPTION
 
-    Re-Install patched application using the current connected ADB instance.
-
-    .PARAMETER appPkg
-
-    Package name of the application.
+    Re-Install patched application (replace app with the same package name) using the current connected ADB instance.
 
     .INPUTS
 
@@ -115,19 +111,11 @@ function Compress-APK {
 
     .EXAMPLE
 
-    PS> Install-APK -appPkg my.app.package     
+    PS> Install-APK     
 #>
 function Install-APK {
-    [CmdletBinding()]
-    param(
-        [Parameter(Mandatory = $true)]
-        [String]
-        $appPkg
-    )
-    Write-Host "Uninstall the current application version..." -ForegroundColor Green
-    adb uninstall $appPkg
-    Write-Host "Install the patched application version..." -ForegroundColor Green
-    adb install -t -d app-updated.apk
+    Write-Host "Replace the current application version with the patched one..." -ForegroundColor Green
+    adb install -r -t -d --no-streaming app-updated.apk
 }
 
 <#
