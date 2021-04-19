@@ -549,5 +549,51 @@ function Show-Device-Screen {
 	& $binaryLocation
 }
 
+<#
+    .DESCRIPTION
+
+    Get the list of app permissions .
+
+    .PARAMETER appPkg
+
+    Package name of the application.
+
+    .INPUTS
+
+    None. You cannot pipe objects to this function.
+
+    .OUTPUTS
+
+    System. String. The output of the tools used.        
+
+    .EXAMPLE
+
+    PS> Get-APK-Permissions -appPkg my.app.package  
+
+    .LINK
+    
+    https://developer.android.com/studio/command-line/dumpsys   
+#>
+function Get-APK-Permissions {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory = $true)]
+        [String]
+        $appPkg
+    )
+    Write-Host "Get permissions for the package '$appPkg'..." -ForegroundColor Green
+    adb shell dumpsys package $appPkg | ForEach-Object {
+        if($_ -like "*permission*"){
+            if($_ -like "*prot=dangerous*"){
+                Write-Host $_ -ForegroundColor Red 
+            }elseif($_ -like "*granted=true*"){
+                Write-Host $_ -ForegroundColor Cyan 
+            }else{
+                Write-Host $_ 
+            }
+        }
+    }
+}
+
 # Define exported functions
 Export-ModuleMember -Function *

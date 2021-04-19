@@ -51,6 +51,7 @@ Function        Compress-APK                                       1.0        An
 Function        Expand-APK                                         1.0        Android-Utils
 Function        Find-Framework                                     1.0        Android-Utils
 Function        Get-APK                                            1.0        Android-Utils
+Function        Get-APK-Permissions                                1.0        Android-Utils
 Function        Get-Memory-Dump                                    1.0        Android-Utils
 Function        Get-Packages                                       1.0        Android-Utils
 Function        Get-Screenrecord                                   1.0        Android-Utils
