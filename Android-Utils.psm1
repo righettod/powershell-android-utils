@@ -595,5 +595,58 @@ function Get-APK-Permissions {
     }
 }
 
+<#
+    .DESCRIPTION
+
+    Monitor the broadcasts send by the device .
+
+    .PARAMETER marker
+
+    String used to filter the events.
+
+    .INPUTS
+
+    None. You cannot pipe objects to this function.
+
+    .OUTPUTS
+
+    System. String. The output of the tools used.        
+
+    .EXAMPLE
+
+    PS> Watch-Broadcasts-Events 
+
+    .EXAMPLE
+
+    PS> Watch-Broadcasts-Events -marker "myapp"
+
+    .LINK
+    
+    https://developer.android.com/studio/command-line/dumpsys    
+#>
+function Watch-Device-Broadcasts{
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory = $false)]
+        [String]
+        $marker
+    )
+    Write-Host "Monitor broadcasts events..." -ForegroundColor Green
+    if ($marker) {
+       Write-Host "Filter: $marker"
+       while($true){
+           adb shell dumpsys activity broadcasts | select-string $marker
+           Write-Host "Press CTRL+C for exit." -ForegroundColor Cyan
+           Start-Sleep -Seconds 5
+       }
+    }else{
+       while($true){
+           adb shell dumpsys activity broadcasts
+           Write-Host "Press CTRL+C for exit." -ForegroundColor Cyan
+           Start-Sleep -Seconds 5
+       }
+    }     
+}
+
 # Define exported functions
 Export-ModuleMember -Function *
