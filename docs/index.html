@@ -261,6 +261,22 @@
           </ul>
         </li>
         <!-- End Test-Tools Menu -->
+          <!-- Watch-Device-Broadcasts Menu -->
+          <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Watch-Device-Broadcasts <b class="caret"></b></a>
+          <ul class="dropdown-menu navmenu-nav">
+            <li><a href="#Watch-Device-Broadcasts-Synopsis">Synopsis</a></li>
+            <li><a href="#Watch-Device-Broadcasts-Syntax">Syntax</a></li>
+            <li><a href="#Watch-Device-Broadcasts-Description">Description</a></li>
+            <li><a href="#Watch-Device-Broadcasts-Parameters">Parameters</a></li>
+            <li><a href="#Watch-Device-Broadcasts-Inputs">Inputs</a></li>
+            <li><a href="#Watch-Device-Broadcasts-Outputs">Outputs</a></li>
+            <li><a href="#Watch-Device-Broadcasts-Examples">Examples</a></li>
+            <li><a href="#Watch-Device-Broadcasts-RelatedLinks">RelatedLinks</a></li>
+            <li><a href="#Watch-Device-Broadcasts-Notes">Notes</a></li>
+          </ul>
+        </li>
+        <!-- End Watch-Device-Broadcasts Menu -->
           <!-- Watch-Log Menu -->
           <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Watch-Log <b class="caret"></b></a>
@@ -957,6 +973,63 @@ Do not specify it on the command line but using the prompt, see call example.<br
             <h3 id="Test-Tools-RelatedLinks">RelatedLinks</h3>
             <p><a href=""></a></p>
             <h3 id="Test-Tools-Notes">Notes</h3>
+            <p></p>
+            <br>
+          </div>
+        </div>
+        <!-- End ConvertFrom-HexIP -->
+        <!-- Watch-Device-Broadcasts -->
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h2 id="Watch-Device-Broadcasts-Header">Watch-Device-Broadcasts</h1>
+          </div>
+          <div class="panel-body">
+            <h3 id="Watch-Device-Broadcasts-Synopsis">Synopsis</h3>
+            <p></p>
+            <h3 id="Watch-Device-Broadcasts-Syntax">Syntax</h3>
+            <pre>Watch-Device-Broadcasts [-marker &lt;String&gt;]</pre>
+            <h3 id="Watch-Device-Broadcasts-Description">Description</h3>
+            <p>Monitor the broadcasts send by the device .</p>
+            <h3 id="Watch-Device-Broadcasts-Parameters">Parameters</h3>
+            <dl class="dl-horizontal">
+              <dt data-toggle="tooltip" title="marker">-marker</dt>
+              <dd>&lt;String&gt;<br>
+                String used to filter the events.<br><br>
+                <div class="row">
+                  <div class="col-md-4 col-xs-4">
+                    Required?<br>
+                    Position?<br>
+                    Default value<br>
+                    Accept pipeline input?<br>
+                    Accept wildchard characters?
+                  </div>
+                  <div class="col-md-6 col-xs-6">
+                    false<br>
+                    1<br>
+                    <br>
+                    false<br>
+                    false
+                  </div>
+                </div>
+                <br>
+              </dd>
+            </dl>
+            <h3 id="Watch-Device-Broadcasts-Inputs">Inputs</h3>
+            <p>None. You cannot pipe objects to this function.</p>
+            <h3 id="Watch-Device-Broadcasts-Outputs">Outputs</h3>
+            <p></p>
+            <h3 id="Watch-Device-Broadcasts-Examples">Examples</h3>
+            <b>Example 1</b>
+            <pre>Watch-Broadcasts-Events</pre>
+            <p><br><br><br><br></p>
+            <br>
+            <b>Example 2</b>
+            <pre>Watch-Broadcasts-Events -marker &quot;myapp&quot;</pre>
+            <p><br><br><br><br></p>
+            <br>
+            <h3 id="Watch-Device-Broadcasts-RelatedLinks">RelatedLinks</h3>
+            <p><a href="https://developer.android.com/studio/command-line/dumpsys">https://developer.android.com/studio/command-line/dumpsys</a></p>
+            <h3 id="Watch-Device-Broadcasts-Notes">Notes</h3>
             <p></p>
             <br>
           </div>
