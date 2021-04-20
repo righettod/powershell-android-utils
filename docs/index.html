@@ -101,6 +101,22 @@
           </ul>
         </li>
         <!-- End Get-APK Menu -->
+          <!-- Get-APK-Flags Menu -->
+          <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Get-APK-Flags <b class="caret"></b></a>
+          <ul class="dropdown-menu navmenu-nav">
+            <li><a href="#Get-APK-Flags-Synopsis">Synopsis</a></li>
+            <li><a href="#Get-APK-Flags-Syntax">Syntax</a></li>
+            <li><a href="#Get-APK-Flags-Description">Description</a></li>
+            <li><a href="#Get-APK-Flags-Parameters">Parameters</a></li>
+            <li><a href="#Get-APK-Flags-Inputs">Inputs</a></li>
+            <li><a href="#Get-APK-Flags-Outputs">Outputs</a></li>
+            <li><a href="#Get-APK-Flags-Examples">Examples</a></li>
+            <li><a href="#Get-APK-Flags-RelatedLinks">RelatedLinks</a></li>
+            <li><a href="#Get-APK-Flags-Notes">Notes</a></li>
+          </ul>
+        </li>
+        <!-- End Get-APK-Flags Menu -->
           <!-- Get-APK-Permissions Menu -->
           <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Get-APK-Permissions <b class="caret"></b></a>
@@ -590,6 +606,59 @@ Do not specify it on the command line but using the prompt, see call example.<br
             <h3 id="Get-APK-RelatedLinks">RelatedLinks</h3>
             <p><a href=""></a></p>
             <h3 id="Get-APK-Notes">Notes</h3>
+            <p></p>
+            <br>
+          </div>
+        </div>
+        <!-- End ConvertFrom-HexIP -->
+        <!-- Get-APK-Flags -->
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h2 id="Get-APK-Flags-Header">Get-APK-Flags</h1>
+          </div>
+          <div class="panel-body">
+            <h3 id="Get-APK-Flags-Synopsis">Synopsis</h3>
+            <p></p>
+            <h3 id="Get-APK-Flags-Syntax">Syntax</h3>
+            <pre>Get-APK-Flags -appPkg &lt;String&gt;</pre>
+            <h3 id="Get-APK-Flags-Description">Description</h3>
+            <p>Get the list of app flags .</p>
+            <h3 id="Get-APK-Flags-Parameters">Parameters</h3>
+            <dl class="dl-horizontal">
+              <dt data-toggle="tooltip" title="appPkg">-appPkg</dt>
+              <dd>&lt;String&gt;<br>
+                Package name of the application.<br><br>
+                <div class="row">
+                  <div class="col-md-4 col-xs-4">
+                    Required?<br>
+                    Position?<br>
+                    Default value<br>
+                    Accept pipeline input?<br>
+                    Accept wildchard characters?
+                  </div>
+                  <div class="col-md-6 col-xs-6">
+                    true<br>
+                    1<br>
+                    <br>
+                    false<br>
+                    false
+                  </div>
+                </div>
+                <br>
+              </dd>
+            </dl>
+            <h3 id="Get-APK-Flags-Inputs">Inputs</h3>
+            <p>None. You cannot pipe objects to this function.</p>
+            <h3 id="Get-APK-Flags-Outputs">Outputs</h3>
+            <p></p>
+            <h3 id="Get-APK-Flags-Examples">Examples</h3>
+            <b>Example 1</b>
+            <pre>Get-APK-Flags -appPkg my.app.package</pre>
+            <p><br><br><br><br></p>
+            <br>
+            <h3 id="Get-APK-Flags-RelatedLinks">RelatedLinks</h3>
+            <p><a href="https://developer.android.com/studio/command-line/dumpsys">https://developer.android.com/studio/command-line/dumpsys</a></p>
+            <h3 id="Get-APK-Flags-Notes">Notes</h3>
             <p></p>
             <br>
           </div>
