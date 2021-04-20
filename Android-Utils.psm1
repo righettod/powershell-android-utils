@@ -648,5 +648,52 @@ function Watch-Device-Broadcasts{
     }     
 }
 
+<#
+    .DESCRIPTION
+
+    Get the list of app flags .
+
+    .PARAMETER appPkg
+
+    Package name of the application.
+
+    .INPUTS
+
+    None. You cannot pipe objects to this function.
+
+    .OUTPUTS
+
+    System. String. The output of the tools used.        
+
+    .EXAMPLE
+
+    PS> Get-APK-Flags -appPkg my.app.package  
+
+    .LINK
+    
+    https://developer.android.com/studio/command-line/dumpsys   
+#>
+function Get-APK-Flags {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory = $true)]
+        [String]
+        $appPkg
+    )
+    Write-Host "Get flags for the package '$appPkg'..." -ForegroundColor Green
+    $flags=[System.Collections.ArrayList]@()
+    adb shell dumpsys package $appPkg | ForEach-Object {
+        if($_ -like "*flags=*" -or $_ -like "*pkgFlags=*"){
+            $items = $_.split("=")[1].replace("[","").replace("]","").trim().split(" ")
+            foreach ($item in $items) {
+                if(-not $flags.Contains($item)){
+                    $flags.Add($item)
+                }
+            }
+        }
+    } | Out-Null
+    $flags -join " " 
+}
+
 # Define exported functions
 Export-ModuleMember -Function *
