@@ -60,6 +60,7 @@ Function        Get-Screenshot                                     1.0        An
 Function        Install-APK                                        1.0        Android-Utils
 Function        Show-Android-Functions                             1.0        Android-Utils
 Function        Show-Device-Screen                                 1.0        Android-Utils
+Function        Show-Diff-APK                                      1.0        Android-Utils
 Function        Show-Signature-APK                                 1.0        Android-Utils
 Function        Test-Tools                                         1.0        Android-Utils
 Function        Watch-Device-Broadcasts                            1.0        Android-Utils

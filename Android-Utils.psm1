@@ -204,8 +204,8 @@ function Get-APK {
     $pkgPath = adb shell pm path $appPkg
     $pkgPath = $pkgPath.Replace("package:", "")
     $tmp = "";
-    foreach ($char in $pkgPath.ToCharArray()){
-        if(-not [Char]::IsControl($char)){
+    foreach ($char in $pkgPath.ToCharArray()) {
+        if (-not [Char]::IsControl($char)) {
             $tmp += $char
         }
     } 
@@ -294,7 +294,7 @@ function Watch-Log {
     }
     $filter = $filter.Trim() 
     Write-Host "Apply filter (https://developer.android.com/studio/command-line/logcat): $filter" -ForegroundColor Green
-	$cmd = "adb logcat -v color $filter"
+    $cmd = "adb logcat -v color $filter"
     Invoke-Expression $cmd
 }
 
@@ -319,7 +319,7 @@ function Watch-Log {
     
     https://github.com/righettod/powershell-android-utils
 #>
-function Show-Android-Functions(){
+function Show-Android-Functions() {
     Get-Command -Module Android-Utils
 }
 
@@ -356,19 +356,20 @@ function Find-Framework {
         $apkLocation
     ) 
     # Entry format is "FrameworkIdentifier" = "FrameworkFileIdentificationPattern"
-    $supportedFrks = @{"XAMARIN" = "out\Xamarin*.dll" ; "CORDOVA" = "out\cordova*.js" ; "REACT-NATIVE" = "out\libreactnative*.so" ; "FLUTTER" = "out\libflutter*.so"}
+    $supportedFrks = @{"XAMARIN" = "out\Xamarin*.dll" ; "CORDOVA" = "out\cordova*.js" ; "REACT-NATIVE" = "out\libreactnative*.so" ; "FLUTTER" = "out\libflutter*.so" }
     Expand-APK -apkLocation $apkLocation 
     Write-Host "Analyze content of the '$apkLocation' file..." -ForegroundColor Green
     $detectedFrks = ""
-    $supportedFrks.GetEnumerator() | ForEach-Object{
+    $supportedFrks.GetEnumerator() | ForEach-Object {
         $fileCount = (Get-ChildItem -Recurse $_.Value | Measure-Object).Count
         if ( $fileCount -ne 0 ) {
             $detectedFrks += $_.Key + " "
         }
     }
-    if ( $detectedFrks -eq "" ){
+    if ( $detectedFrks -eq "" ) {
         Write-Host "No framework detected"
-    }else{
+    }
+    else {
         Write-Host "Detected framework: $detectedFrks"
     }
 }
@@ -403,8 +404,8 @@ function Find-Framework {
     
     https://github.com/nelenkov/android-backup-extractor
 #>
-function Backup-Data-APK{
-   [CmdletBinding()]
+function Backup-Data-APK {
+    [CmdletBinding()]
     param(
         [Parameter(Mandatory = $true)]
         [String]
@@ -479,8 +480,8 @@ function Get-Memory-Dump {
     $dumpScriptLocation = $dumpScriptLocation.Replace("Android-Utils.psd1", "memory-dump.sh")
     $appPid = adb shell pidof -s $appPkg
     $tmp = "";
-    foreach ($char in $appPid.ToCharArray()){
-        if(-not [Char]::IsControl($char)){
+    foreach ($char in $appPid.ToCharArray()) {
+        if (-not [Char]::IsControl($char)) {
             $tmp += $char
         }
     }
@@ -492,9 +493,9 @@ function Get-Memory-Dump {
     adb pull /data/local/tmp/memory-dump.hprof .
     adb shell rm /data/local/tmp/memory-dump.hprof
     adb shell rm /data/local/tmp/memory-dump.sh
-	Write-Host "Create a standard version of the HPROF file from the obtained Android format HPROF file 'memory-dump.hprof'..." -ForegroundColor Green
-	hprof-conv memory-dump.hprof memory-dump-standard.hprof
-	Get-ChildItem -Path . -Include *.hprof -Name
+    Write-Host "Create a standard version of the HPROF file from the obtained Android format HPROF file 'memory-dump.hprof'..." -ForegroundColor Green
+    hprof-conv memory-dump.hprof memory-dump-standard.hprof
+    Get-ChildItem -Path . -Include *.hprof -Name
 }
 
 <#
@@ -515,10 +516,10 @@ function Get-Screenrecord {
     Write-Host "Press CTRL+C to finish the recording." -ForegroundColor Cyan
     # Use a "Try{} Finally{}" to catch the CTRL+C
     # See https://stackoverflow.com/a/15788979/451455
-    try{
+    try {
         adb shell screenrecord /data/local/tmp/screenrecord.mp4
     }
-    finally{
+    finally {
         Write-Host "Give 10 seconds to the device to finish writing the file..." -ForegroundColor Cyan
         Start-Sleep -Seconds 10
         adb pull /data/local/tmp/screenrecord.mp4 .
@@ -546,7 +547,7 @@ function Get-Screenrecord {
 function Show-Device-Screen {
     $binaryLocation = (Get-Module -ListAvailable Android-Utils).path
     $binaryLocation = $binaryLocation.Replace("Android-Utils.psd1", "scrcpy\scrcpy.exe")
-	& $binaryLocation
+    & $binaryLocation
 }
 
 <#
@@ -583,12 +584,14 @@ function Get-APK-Permissions {
     )
     Write-Host "Get permissions for the package '$appPkg'..." -ForegroundColor Green
     adb shell dumpsys package $appPkg | ForEach-Object {
-        if($_ -like "*permission*"){
-            if($_ -like "*prot=dangerous*"){
+        if ($_ -like "*permission*") {
+            if ($_ -like "*prot=dangerous*") {
                 Write-Host $_ -ForegroundColor Red 
-            }elseif($_ -like "*granted=true*"){
+            }
+            elseif ($_ -like "*granted=true*") {
                 Write-Host $_ -ForegroundColor Cyan 
-            }else{
+            }
+            else {
                 Write-Host $_ 
             }
         }
@@ -624,7 +627,7 @@ function Get-APK-Permissions {
     
     https://developer.android.com/studio/command-line/dumpsys    
 #>
-function Watch-Device-Broadcasts{
+function Watch-Device-Broadcasts {
     [CmdletBinding()]
     param(
         [Parameter(Mandatory = $false)]
@@ -633,25 +636,26 @@ function Watch-Device-Broadcasts{
     )
     Write-Host "Monitor broadcasts events..." -ForegroundColor Green
     if ($marker) {
-       Write-Host "Filter: $marker"
-       while($true){
-           adb shell dumpsys activity broadcasts | select-string $marker
-           Write-Host "Press CTRL+C for exit." -ForegroundColor Cyan
-           Start-Sleep -Seconds 5
-       }
-    }else{
-       while($true){
-           adb shell dumpsys activity broadcasts
-           Write-Host "Press CTRL+C for exit." -ForegroundColor Cyan
-           Start-Sleep -Seconds 5
-       }
+        Write-Host "Filter: $marker"
+        while ($true) {
+            adb shell dumpsys activity broadcasts | select-string $marker
+            Write-Host "Press CTRL+C for exit." -ForegroundColor Cyan
+            Start-Sleep -Seconds 5
+        }
+    }
+    else {
+        while ($true) {
+            adb shell dumpsys activity broadcasts
+            Write-Host "Press CTRL+C for exit." -ForegroundColor Cyan
+            Start-Sleep -Seconds 5
+        }
     }     
 }
 
 <#
     .DESCRIPTION
 
-    Get the list of app flags .
+    Get the list of app flags.
 
     .PARAMETER appPkg
 
@@ -681,18 +685,63 @@ function Get-APK-Flags {
         $appPkg
     )
     Write-Host "Get flags for the package '$appPkg'..." -ForegroundColor Green
-    $flags=[System.Collections.ArrayList]@()
+    $flags = [System.Collections.ArrayList]@()
     adb shell dumpsys package $appPkg | ForEach-Object {
-        if($_ -like "*flags=*" -or $_ -like "*pkgFlags=*"){
-            $items = $_.split("=")[1].replace("[","").replace("]","").trim().split(" ")
+        if ($_ -like "*flags=*" -or $_ -like "*pkgFlags=*") {
+            $items = $_.split("=")[1].replace("[", "").replace("]", "").trim().split(" ")
             foreach ($item in $items) {
-                if(-not $flags.Contains($item)){
+                if (-not $flags.Contains($item)) {
                     $flags.Add($item)
                 }
             }
         }
     } | Out-Null
     $flags -join " " 
+}
+
+<#
+    .DESCRIPTION
+
+    Show the difference between 2 APK files.
+
+    .PARAMETER apkFirstLocation
+
+    Path to the first APK file.
+
+    .PARAMETER apkSecondLocation
+
+    Path to the second APK file.
+
+    .INPUTS
+
+    None. You cannot pipe objects to this function.
+
+    .OUTPUTS
+
+    System. String. The output of the tools used.        
+
+    .EXAMPLE
+
+    PS> Show-Diff-APK -apkFirstLocation .\app1.apk -apkSecondLocation .\app2.apk
+    
+    .LINK
+    
+    https://github.com/JakeWharton/diffuse
+#>
+function Show-Diff-APK {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory = $true)]
+        [String]
+        $apkFirstLocation,
+        [Parameter(Mandatory = $true)]
+        [String]
+        $apkSecondLocation
+    )
+    Write-Host "Show the difference between the 2 APK files provided..." -ForegroundColor Green
+    $diffuseLocation = (Get-Module -ListAvailable Android-Utils).path
+    $diffuseLocation = $diffuseLocation.Replace("Android-Utils.psd1", "diffuse.jar")
+    java -jar $diffuseLocation diff $apkFirstLocation $apkSecondLocation
 }
 
 # Define exported functions
