@@ -245,6 +245,22 @@
           </ul>
         </li>
         <!-- End Show-Device-Screen Menu -->
+          <!-- Show-Diff-APK Menu -->
+          <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Show-Diff-APK <b class="caret"></b></a>
+          <ul class="dropdown-menu navmenu-nav">
+            <li><a href="#Show-Diff-APK-Synopsis">Synopsis</a></li>
+            <li><a href="#Show-Diff-APK-Syntax">Syntax</a></li>
+            <li><a href="#Show-Diff-APK-Description">Description</a></li>
+            <li><a href="#Show-Diff-APK-Parameters">Parameters</a></li>
+            <li><a href="#Show-Diff-APK-Inputs">Inputs</a></li>
+            <li><a href="#Show-Diff-APK-Outputs">Outputs</a></li>
+            <li><a href="#Show-Diff-APK-Examples">Examples</a></li>
+            <li><a href="#Show-Diff-APK-RelatedLinks">RelatedLinks</a></li>
+            <li><a href="#Show-Diff-APK-Notes">Notes</a></li>
+          </ul>
+        </li>
+        <!-- End Show-Diff-APK Menu -->
           <!-- Show-Signature-APK Menu -->
           <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Show-Signature-APK <b class="caret"></b></a>
@@ -622,7 +638,7 @@ Do not specify it on the command line but using the prompt, see call example.<br
             <h3 id="Get-APK-Flags-Syntax">Syntax</h3>
             <pre>Get-APK-Flags -appPkg &lt;String&gt;</pre>
             <h3 id="Get-APK-Flags-Description">Description</h3>
-            <p>Get the list of app flags .</p>
+            <p>Get the list of app flags.</p>
             <h3 id="Get-APK-Flags-Parameters">Parameters</h3>
             <dl class="dl-horizontal">
               <dt data-toggle="tooltip" title="appPkg">-appPkg</dt>
@@ -957,6 +973,80 @@ Do not specify it on the command line but using the prompt, see call example.<br
             <h3 id="Show-Device-Screen-RelatedLinks">RelatedLinks</h3>
             <p><a href="https://github.com/Genymobile/scrcpy">https://github.com/Genymobile/scrcpy</a></p>
             <h3 id="Show-Device-Screen-Notes">Notes</h3>
+            <p></p>
+            <br>
+          </div>
+        </div>
+        <!-- End ConvertFrom-HexIP -->
+        <!-- Show-Diff-APK -->
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h2 id="Show-Diff-APK-Header">Show-Diff-APK</h1>
+          </div>
+          <div class="panel-body">
+            <h3 id="Show-Diff-APK-Synopsis">Synopsis</h3>
+            <p></p>
+            <h3 id="Show-Diff-APK-Syntax">Syntax</h3>
+            <pre>Show-Diff-APK -apkFirstLocation &lt;String&gt; -apkSecondLocation &lt;String&gt;</pre>
+            <h3 id="Show-Diff-APK-Description">Description</h3>
+            <p>Show the difference between 2 APK files.</p>
+            <h3 id="Show-Diff-APK-Parameters">Parameters</h3>
+            <dl class="dl-horizontal">
+              <dt data-toggle="tooltip" title="apkFirstLocation">-apkFirstLocation</dt>
+              <dd>&lt;String&gt;<br>
+                Path to the first APK file.<br><br>
+                <div class="row">
+                  <div class="col-md-4 col-xs-4">
+                    Required?<br>
+                    Position?<br>
+                    Default value<br>
+                    Accept pipeline input?<br>
+                    Accept wildchard characters?
+                  </div>
+                  <div class="col-md-6 col-xs-6">
+                    true<br>
+                    1<br>
+                    <br>
+                    false<br>
+                    false
+                  </div>
+                </div>
+                <br>
+              </dd>
+              <dt data-toggle="tooltip" title="apkSecondLocation">-apkSecondLocation</dt>
+              <dd>&lt;String&gt;<br>
+                Path to the second APK file.<br><br>
+                <div class="row">
+                  <div class="col-md-4 col-xs-4">
+                    Required?<br>
+                    Position?<br>
+                    Default value<br>
+                    Accept pipeline input?<br>
+                    Accept wildchard characters?
+                  </div>
+                  <div class="col-md-6 col-xs-6">
+                    true<br>
+                    2<br>
+                    <br>
+                    false<br>
+                    false
+                  </div>
+                </div>
+                <br>
+              </dd>
+            </dl>
+            <h3 id="Show-Diff-APK-Inputs">Inputs</h3>
+            <p>None. You cannot pipe objects to this function.</p>
+            <h3 id="Show-Diff-APK-Outputs">Outputs</h3>
+            <p></p>
+            <h3 id="Show-Diff-APK-Examples">Examples</h3>
+            <b>Example 1</b>
+            <pre>Show-Diff-APK -apkFirstLocation .\app1.apk -apkSecondLocation .\app2.apk</pre>
+            <p><br><br><br><br></p>
+            <br>
+            <h3 id="Show-Diff-APK-RelatedLinks">RelatedLinks</h3>
+            <p><a href="https://github.com/JakeWharton/diffuse">https://github.com/JakeWharton/diffuse</a></p>
+            <h3 id="Show-Diff-APK-Notes">Notes</h3>
             <p></p>
             <br>
           </div>
