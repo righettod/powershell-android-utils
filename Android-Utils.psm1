@@ -476,8 +476,6 @@ function Get-Memory-Dump {
         [String]
         $appPkg
     )
-    $dumpScriptLocation = (Get-Module -ListAvailable Android-Utils).path
-    $dumpScriptLocation = $dumpScriptLocation.Replace("Android-Utils.psd1", "memory-dump.sh")
     $appPid = adb shell pidof -s $appPkg
     $tmp = "";
     foreach ($char in $appPid.ToCharArray()) {
@@ -486,16 +484,19 @@ function Get-Memory-Dump {
         }
     }
     $appPid = $tmp.trim() -as [int]
-    Write-Host "Take a memory dump of the specified application (PID: $appPid) and download it into file 'memory-dump.hprof'..." -ForegroundColor Green
-    adb push $dumpScriptLocation /data/local/tmp/memory-dump.sh
-    adb shell chmod +x /data/local/tmp/memory-dump.sh
-    adb shell sh /data/local/tmp/memory-dump.sh $appPid
-    adb pull /data/local/tmp/memory-dump.hprof .
-    adb shell rm /data/local/tmp/memory-dump.hprof
-    adb shell rm /data/local/tmp/memory-dump.sh
-    Write-Host "Create a standard version of the HPROF file from the obtained Android format HPROF file 'memory-dump.hprof'..." -ForegroundColor Green
-    hprof-conv memory-dump.hprof memory-dump-standard.hprof
-    Get-ChildItem -Path . -Include *.hprof -Name
+    Write-Host "Take a memory dump of the specified application (PID: $appPid) and download it into file '$appPkg.hprof'..." -ForegroundColor Green
+    adb shell am dumpheap $appPid /data/local/tmp/$appPkg.hprof
+    if ($?) {
+        #Dump succeed
+        Write-Host "Wait for 15 seconds that data be written to the disk..."  -ForegroundColor Green
+        Start-Sleep -Seconds 15
+        adb pull /data/local/tmp/$appPkg.hprof .
+        adb shell rm /data/local/tmp/$appPkg.hprof
+        Write-Host "Create a standard version of the HPROF file from the obtained Android format HPROF file..." -ForegroundColor Green
+        $cmd = "hprof-conv $appPkg.hprof $appPkg.standard.hprof"
+        Invoke-Expression $cmd
+        Get-ChildItem -Path . -Include *.hprof -Name
+    }
 }
 
 <#
