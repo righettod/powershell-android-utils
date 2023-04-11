@@ -200,19 +200,22 @@ function Get-APK {
         [String]
         $appPkg
     )
-    Write-Host "Get APK for the path '$appPkg'..." -ForegroundColor Green
-    $pkgPath = adb shell pm path $appPkg
-    $pkgPath = $pkgPath.Replace("package:", "")
-    $tmp = "";
-    foreach ($char in $pkgPath.ToCharArray()) {
-        if (-not [Char]::IsControl($char)) {
-            $tmp += $char
-        }
-    } 
-    $pkgPath = $tmp     
-    Remove-Item app.apk -Recurse -ErrorAction Ignore
-    adb pull "$pkgPath" app.apk
-    Write-Host "APK stored as 'app.apk' file"
+    Write-Host "Get APK(s) for the path '$appPkg'..." -ForegroundColor Green
+    $entries = (adb shell pm path $appPkg).split("\n")
+    foreach ($entry in $entries) {
+        $pkgPath = $entry.Replace("package:", "").trim()
+        $tmp = "";
+        foreach ($char in $pkgPath.ToCharArray()) {
+            if (-not [Char]::IsControl($char)) {
+                $tmp += $char
+            }
+        } 
+        $pkgPath = $tmp
+        $tgtFileName = $pkgPath.split("/")[-1]
+        Remove-Item $tgtFileName -Recurse -ErrorAction Ignore
+        adb pull "$pkgPath" $tgtFileName
+        Write-Host "==> APK stored as '$tgtFileName' file."
+    }
 }
 
 <#
