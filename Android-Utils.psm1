@@ -87,7 +87,8 @@ function Expand-APK {
 function Compress-APK {
     $keystoreLocation = (Get-Module -ListAvailable Android-Utils).path
     $keystoreLocation = $keystoreLocation.Replace("Android-Utils.psd1", "my.keystore")
-    Write-Host "Repacking folder 'out' to 'app-updated.apk' file using keystore '$keystoreLocation'..." -ForegroundColor Green
+    $keystoreLocationDisplay = $keystoreLocation.split("\")[-1]
+    Write-Host "Repacking folder 'out' to 'app-updated.apk' file using keystore '$keystoreLocationDisplay'..." -ForegroundColor Green
     Remove-Item app-updated.apk -Recurse -ErrorAction Ignore
     apktool b --use-aapt2 -d out/ -o app-updated.apk
     zipalign -f 4 app-updated.apk app-updated2.apk
@@ -202,6 +203,7 @@ function Get-APK {
     )
     Write-Host "Get APK(s) for the path '$appPkg'..." -ForegroundColor Green
     $entries = (adb shell pm path $appPkg).split("\n")
+    [System.Collections.ArrayList]$apkFiles = @()
     foreach ($entry in $entries) {
         $pkgPath = $entry.Replace("package:", "").trim()
         $tmp = "";
@@ -211,10 +213,32 @@ function Get-APK {
             }
         } 
         $pkgPath = $tmp
-        $tgtFileName = $pkgPath.split("/")[-1]
+        $tgtFileName = $pkgPath.split("/")[-1]    
         Remove-Item $tgtFileName -Recurse -ErrorAction Ignore
         adb pull "$pkgPath" $tgtFileName
         Write-Host "==> APK stored as '$tgtFileName' file."
+        $apkFiles.Add($tgtFileName) | Out-Null
+    }
+    if ($entries.Count -gt 1) {
+        Write-Host "Merge all APK to a single one..." -ForegroundColor Green
+        $workDir = "base"
+        $baseApkFileName = ""
+        Remove-Item $workDir -Recurse -ErrorAction Ignore
+        New-Item $workDir -ItemType Directory | Out-Null
+        foreach ($apkFile in $apkFiles) {
+            if ($apkFile -contains "base.apk") {
+                $baseApkFileName = $apkFile
+                continue
+            }
+            apktool d $apkFile -f -o out/
+            Copy-Item -Path "out\*" -Destination $workDir -Force -Recurse
+        }
+        apktool d $baseApkFileName -f -o out/
+        Copy-Item -Path "out\*" -Destination $workDir -Force -Recurse
+        Remove-Item out -Recurse -ErrorAction Ignore 
+        Rename-Item -Path $workDir -NewName "out"
+        Compress-APK
+        Remove-Item "out" -Recurse -ErrorAction Ignore 
     }
 }
 
