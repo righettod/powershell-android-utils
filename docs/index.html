@@ -53,6 +53,22 @@
           </ul>
         </li>
         <!-- End Compress-APK Menu -->
+          <!-- Connect-Android-Device Menu -->
+          <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Connect-Android-Device <b class="caret"></b></a>
+          <ul class="dropdown-menu navmenu-nav">
+            <li><a href="#Connect-Android-Device-Synopsis">Synopsis</a></li>
+            <li><a href="#Connect-Android-Device-Syntax">Syntax</a></li>
+            <li><a href="#Connect-Android-Device-Description">Description</a></li>
+            <li><a href="#Connect-Android-Device-Parameters">Parameters</a></li>
+            <li><a href="#Connect-Android-Device-Inputs">Inputs</a></li>
+            <li><a href="#Connect-Android-Device-Outputs">Outputs</a></li>
+            <li><a href="#Connect-Android-Device-Examples">Examples</a></li>
+            <li><a href="#Connect-Android-Device-RelatedLinks">RelatedLinks</a></li>
+            <li><a href="#Connect-Android-Device-Notes">Notes</a></li>
+          </ul>
+        </li>
+        <!-- End Connect-Android-Device Menu -->
           <!-- Expand-APK Menu -->
           <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Expand-APK <b class="caret"></b></a>
@@ -463,6 +479,59 @@ Do not specify it on the command line but using the prompt, see call example.<br
             <h3 id="Compress-APK-RelatedLinks">RelatedLinks</h3>
             <p><a href=""></a></p>
             <h3 id="Compress-APK-Notes">Notes</h3>
+            <p></p>
+            <br>
+          </div>
+        </div>
+        <!-- End ConvertFrom-HexIP -->
+        <!-- Connect-Android-Device -->
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h2 id="Connect-Android-Device-Header">Connect-Android-Device</h1>
+          </div>
+          <div class="panel-body">
+            <h3 id="Connect-Android-Device-Synopsis">Synopsis</h3>
+            <p></p>
+            <h3 id="Connect-Android-Device-Syntax">Syntax</h3>
+            <pre>Connect-Android-Device -deviceHost &lt;String&gt;</pre>
+            <h3 id="Connect-Android-Device-Description">Description</h3>
+            <p>Establish the connection between ADB and a Android device on port 5555.</p>
+            <h3 id="Connect-Android-Device-Parameters">Parameters</h3>
+            <dl class="dl-horizontal">
+              <dt data-toggle="tooltip" title="deviceHost">-deviceHost</dt>
+              <dd>&lt;String&gt;<br>
+                IP address or host name of the device to connect to.<br><br>
+                <div class="row">
+                  <div class="col-md-4 col-xs-4">
+                    Required?<br>
+                    Position?<br>
+                    Default value<br>
+                    Accept pipeline input?<br>
+                    Accept wildchard characters?
+                  </div>
+                  <div class="col-md-6 col-xs-6">
+                    true<br>
+                    1<br>
+                    <br>
+                    false<br>
+                    false
+                  </div>
+                </div>
+                <br>
+              </dd>
+            </dl>
+            <h3 id="Connect-Android-Device-Inputs">Inputs</h3>
+            <p>None. You cannot pipe objects to this function.</p>
+            <h3 id="Connect-Android-Device-Outputs">Outputs</h3>
+            <p></p>
+            <h3 id="Connect-Android-Device-Examples">Examples</h3>
+            <b>Example 1</b>
+            <pre>Connect-Android-Device -deviceHost 10.10.10.10</pre>
+            <p><br><br><br><br></p>
+            <br>
+            <h3 id="Connect-Android-Device-RelatedLinks">RelatedLinks</h3>
+            <p><a href="https://developer.android.com/tools/adb">https://developer.android.com/tools/adb</a></p>
+            <h3 id="Connect-Android-Device-Notes">Notes</h3>
             <p></p>
             <br>
           </div>
