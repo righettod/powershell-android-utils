@@ -1,4 +1,4 @@
-![GenerateDocumentation](https://github.com/righettod/powershell-android-utils/workflows/GenerateDocumentation/badge.svg?branch=master)
+![MadeWitVSCode](https://img.shields.io/static/v1?label=Made%20with&message=VisualStudio%20Code&color=blue&?style=for-the-badge&logo=visualstudio) ![AutomatedWith](https://img.shields.io/static/v1?label=Automated%20with&message=GitHub%20Actions&color=blue&?style=for-the-badge&logo=github) ![GenerateDocumentation](https://github.com/righettod/powershell-android-utils/workflows/GenerateDocumentation/badge.svg?branch=master)
 
 # 🤔 Description
 
