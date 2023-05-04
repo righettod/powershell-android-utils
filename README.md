@@ -18,6 +18,8 @@ See [here](https://righettod.github.io/powershell-android-utils/).
 
 # 📋 Requirements
 
+> **Note**: You can use the function `Test-Tools` to verify that your installation is OK.
+
 The module assume that the following tools are available in `%PATH%`:
 
 * [adb](https://developer.android.com/studio/command-line/adb)
@@ -25,8 +27,6 @@ The module assume that the following tools are available in `%PATH%`:
 * [apksigner](https://developer.android.com/studio/command-line/apksigner)
 * [zipalign](https://developer.android.com/studio/command-line/zipalign)
 * [java](https://adoptopenjdk.net) (Runtime or JDK)
-
-💡 You can use the function `Test-Tools` to verify that your installation is OK.
 
 # 🚧 Module installation
 
