@@ -26,7 +26,7 @@ The module assume that the following tools are available in `%PATH%`:
 
 :information_source: You can use the function `Test-Tools` to verify that your installation is OK.
 
-# Module installation
+# 🚧 Module installation
 
 ## Step 1
 
@@ -89,7 +89,7 @@ OpenJDK 64-Bit Server VM AdoptOpenJDK (build 12.0.2+10, mixed mode, sharing)
 
 Module is ready to be used!
 
-# Help
+#  Help
 
 Use the following command to get help about a function:
 
