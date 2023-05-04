@@ -7,7 +7,7 @@ PowerShell module providing utility commands to manipulate a APK file on Windows
 This module can be combined with the tool [objection](https://github.com/sensepost/objection) in this way:
 
 1. Use the module to alter the original APK in order to prepare it to be passed to **objection** for patching:
-	* Example of alteration: Change a value in a Flutter or Cordova configuration file, disable a option in the network security configuration file, disable a flag in the Smali code, etc.
+ * Example of alteration: Change a value in a Flutter or Cordova configuration file, disable a option in the network security configuration file, disable a flag in the Smali code, etc.
 2. Patch the APK with [objection](https://github.com/sensepost/objection/wiki/Patching-Android-Applications).
 
 # Online documentation
@@ -48,6 +48,7 @@ CommandType     Name                                               Version    So
 -----------     ----                                               -------    ------
 Function        Backup-Data-APK                                    1.0        Android-Utils
 Function        Compress-APK                                       1.0        Android-Utils
+Function        Connect-Android-Device                             1.0        Android-Utils
 Function        Expand-APK                                         1.0        Android-Utils
 Function        Find-Framework                                     1.0        Android-Utils
 Function        Get-APK                                            1.0        Android-Utils
@@ -86,7 +87,7 @@ OpenJDK Runtime Environment AdoptOpenJDK (build 12.0.2+10)
 OpenJDK 64-Bit Server VM AdoptOpenJDK (build 12.0.2+10, mixed mode, sharing)
 ```
 
-Module is ready to be used :thumbsup: 
+Module is ready to be used :thumbsup:
 
 # Help
 

@@ -772,5 +772,50 @@ function Show-Diff-APK {
     java -jar $diffuseLocation diff $apkFirstLocation $apkSecondLocation
 }
 
+<#
+    .DESCRIPTION
+
+    Establish the connection between ADB and a Android device on port 5555.
+
+    .PARAMETER deviceHost
+
+    IP address or host name of the device to connect to.
+
+    .INPUTS
+
+    None. You cannot pipe objects to this function.
+
+    .OUTPUTS
+
+    None 
+
+    .EXAMPLE
+
+    PS> Connect-Android-Device -deviceHost 10.10.10.10
+	
+    .LINK
+    
+    https://developer.android.com/tools/adb
+#>
+function Connect-Android-Device {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory = $true)]
+        [String]
+        $deviceHost
+    )
+    $prt = 5555
+    $testConnection = Test-NetConnection -ComputerName $deviceHost -Port $prt -InformationLevel Quiet
+    if ($testConnection) {
+        Write-Host "Host reachable on port $prt, try to connect ADB..." -ForegroundColor Green
+        $target = "$deviceHost" + ":$prt"
+        $cmd = "adb connect $target"
+        Invoke-Expression $cmd | select-string "Connected"
+    }
+    else {
+        Write-Host "Host not reachable on port $prt!" -ForegroundColor Red
+    }
+}
+
 # Define exported functions
 Export-ModuleMember -Function *
