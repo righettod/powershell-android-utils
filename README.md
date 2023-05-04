@@ -7,12 +7,14 @@
 💡 This module can be combined with the tool [objection](https://github.com/sensepost/objection) in this way:
 
 1. Use the module to alter the original APK in order to prepare it to be passed to **objection** for patching:
- * Example of alteration: Change a value in a Flutter or Cordova configuration file, disable a option in the network security configuration file, disable a flag in the Smali code, etc.
+
+* Example of alteration: Change a value in a Flutter or Cordova configuration file, disable a option in the network security configuration file, disable a flag in the Smali code, etc.
+
 2. Patch the APK with [objection](https://github.com/sensepost/objection/wiki/Patching-Android-Applications).
 
 # 📚 Online documentation
 
-:book: See [here](https://righettod.github.io/powershell-android-utils/).
+See [here](https://righettod.github.io/powershell-android-utils/).
 
 # 📋 Requirements
 
@@ -24,7 +26,7 @@ The module assume that the following tools are available in `%PATH%`:
 * [zipalign](https://developer.android.com/studio/command-line/zipalign)
 * [java](https://adoptopenjdk.net) (Runtime or JDK)
 
-:information_source: You can use the function `Test-Tools` to verify that your installation is OK.
+💡 You can use the function `Test-Tools` to verify that your installation is OK.
 
 # 🚧 Module installation
 
@@ -87,9 +89,9 @@ OpenJDK Runtime Environment AdoptOpenJDK (build 12.0.2+10)
 OpenJDK 64-Bit Server VM AdoptOpenJDK (build 12.0.2+10, mixed mode, sharing)
 ```
 
-Module is ready to be used!
+🚀 Module is ready to be used!
 
-#  Help
+# 👀 Help
 
 Use the following command to get help about a function:
 
