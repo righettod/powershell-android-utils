@@ -89,6 +89,7 @@ function Compress-APK {
     $keystoreLocation = $keystoreLocation.Replace("Android-Utils.psd1", "my.keystore")
     $keystoreLocationDisplay = $keystoreLocation.split("\")[-1]
     Write-Host "Repacking folder 'out' to 'app-updated.apk' file using keystore '$keystoreLocationDisplay'..." -ForegroundColor Green
+    Write-Host "[i] If repack fail then try deleting the folder '$env:LOCALAPPDATA`\apktool\framework' and then perform a new depack/repack cycle." -ForegroundColor Cyan
     Remove-Item app-updated.apk -Recurse -ErrorAction Ignore
     apktool b --use-aapt2 -d out/ -o app-updated.apk
     zipalign -f 4 app-updated.apk app-updated2.apk
