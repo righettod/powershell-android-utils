@@ -5,9 +5,12 @@ on:
     branches: [ master ]
     paths:
       - "Android-Utils.ps*"
+permissions: read-all      
 jobs:
   build:
     runs-on: windows-latest
+    permissions:
+      contents: write    
     steps:
       - uses: actions/checkout@v2
       - name: Generate the documentation
